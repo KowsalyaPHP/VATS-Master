@@ -1,0 +1,38 @@
+<app-header></app-header>
+<header id="login">
+    <!-- Background Image -->
+    <div class="bg-img">
+        <img class="background" src="../assets/img/laptop.jpg" alt="logo" width="100%">
+    </div>
+</header>
+<br/>
+<div class="home-wrapper">
+    <div class="login">                
+        <div class="login-form">
+            <h3>Login</h3>
+            <!--<form class="form" role="form" autocomplete="off" id="formLogin" novalidate=""
+                                style="padding-bottom: 10px" [formGroup]="loginForm"
+                                (submit)='validateLoginDetails(loginForm.value)'>-->
+                <h4>User Type</h4>
+                <select id="loginAs" class="form-control" name="loginAs" formControlName="loginAs"
+                    #loginAs required="">
+                    <option value='' selected="selected">Select Type</option>
+                    <option value="Admin">Admin</option>
+                    <option value="Vendor">Vendor</option>
+                    <option value="Employer">Employer</option>
+                </select>
+                <h4>Username:</h4>
+                <input type="text" placeholder="Username"/><br>
+                <h4>Password:</h4>
+                <input type="password" placeholder="Password"/>
+                <br>
+                <input type="button" value="Login" class="login-button"/>
+                <br>
+                <p class="no-access">Forget your Password?</p>
+                <p>New to ATS?<a class="sign-up">Sign Up!</a></p>
+                
+               
+            <!--</form>-->
+        </div>
+    </div>
+</div>
