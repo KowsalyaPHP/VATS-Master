@@ -17,7 +17,7 @@ li {
   transition:all .1s;
   text-align: center;
   box-sizing:border-box;
-  text-shadow:0px 1px #5366bf;
+ /* text-shadow:0px 1px #7f8086;*/
   border-right: thin solid #f9eeee;
 }
 li:last-child {
@@ -41,7 +41,7 @@ a:hover{
   color: #3a405d;
 }
 div {
-  margin-top: 5px;
+  margin-top: 6px;
   font-weight: 200;  
 }
 #login_width:hover{
@@ -50,7 +50,7 @@ div {
 /*Media Querie*/
 @media only screen and (min-width : 250px) and (max-width : 530px){
   #wrapper {
-    width:90%;
+    width:100%;
   }
 
 }

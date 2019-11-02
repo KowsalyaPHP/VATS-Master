@@ -1,0 +1,132 @@
+<header id="login">
+    <!-- Background Image -->
+    <div class="bg-img">
+        <img class="background" src="../assets/img/laptop.jpg" alt="logo" width="100%" height="100%">
+    </div>
+</header>
+`
+<div class="signup_form">
+<div class="form-group">
+        <form class="form" role="form" autocomplete="off" id="formLogin" novalidate=""
+        [formGroup]="SignupForm"
+       (submit)='validatesignUpDetails(SignupForm.value)'>
+       <h3 style="text-align: center;margin-bottom: 22px;">Client Form</h3>
+    <table style="width:100%;">
+        <!-- <tr>
+            <td><label>Client ID<span class="mandatory">*</span></label></td>
+            <td><input type="text" formControlName="ClientID" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" /></td>
+         </tr>-->
+         <tr>
+            <td><label>Name<span class="mandatory">*</span></label></td>
+            <td class="tooltips"><input type="text" formControlName="ClientName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" /><span class="tooltipstext">Ex: Indian Express</span></td>
+        </tr>
+        <tr>
+            <td><label>ShortName</label></td>
+            <td class="tooltips"><input type="text" formControlName="ClientShortName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" /><span class="tooltipstext">Optional Info</span></td>
+        </tr>
+        <tr>
+            <td><label>Door No,Street<span class="mandatory">*</span></label></td>
+            <td class="tooltips"><input type="text" formControlName="RegdAddressL1" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" /><span class="tooltipstext">Ex: 305, Express Avenue</span></td>
+        </tr>
+        <tr>
+            <td><label>Area<span class="mandatory">*</span></label></td>
+            <td class="tooltips"><input type="text" formControlName="Area" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" /><span class="tooltipstext">Royapetta</span></td>
+        </tr>
+        <tr><td><label>City<span class="mandatory">*</span></label></td>
+            <td class="tooltips">
+                 <select placeholder="City" class="form-control" id="City" name="City" formControlName="City" >
+                    <option value='1' >Coimbatore</option>
+                    <option  value="" selected>Chennai</option>
+                    <option value="3">Mumbai</option>
+                </select>
+                <!--<input type="text" formControlName="City" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />-->
+                <span class="tooltipstext">Chennai</span></td>
+        </tr>
+        <tr>
+            <td><label>PIN CODE<span class="mandatory">*</span></label></td>
+            <td class="tooltips"><input type="text" formControlName="PINCODE" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" /><span class="tooltipstext">Enter PinCode and select Area</span></td>
+        </tr>
+        <tr>
+            <td><label>ContactNo<span class="mandatory">*</span></label></td>
+            <td class="tooltips"><input type="text" formControlName="ClientPhoneNo" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" /><span class="tooltipstext">Office Phone Number</span></td>
+        </tr>
+        <tr>
+            <td><label>FaxNo</label></td>
+            <td class="tooltips"><input type="text" formControlName="ClientFaxNo" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" /><span class="tooltipstext">Office Fax Number</span></td>
+        </tr>
+        <tr>
+            <td><label>MobileNo</label></td>
+            <td class="tooltips"><input type="text" formControlName="ClientMobileNo" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" /><span class="tooltipstext">Mobile Number</span></td>
+        </tr>
+        <tr>
+            <td><label>Email Id<span class="mandatory">*</span></label></td>
+            <td class="tooltips"><input type="text" formControlName="ClientEMAILID" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" /><span class="tooltipstext">Contact EMAIL ID</span></td>
+        </tr>
+      <!--  <tr>
+            <td><label>GST Number<span class="mandatory">*</span></label></td>
+            <td class="tooltips"><input type="text" formControlName="ClientGSTNo" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" /><span class="tooltipstext">ForInvoicing Purposes</span></td>
+        </tr>
+        <tr>
+            <td><label>Landmark</label></td>
+            <td class="tooltips"><input type="text" formControlName="ClientLandMark" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" /><span class="tooltipstext">To help in locating the place</span></td>
+        </tr>        -->
+        <tr >            
+            <td><label>Main Contact<span class="mandatory">*</span></label></td>
+            <td class="tooltips"><input type="text" formControlName="MainContact" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" /><span class="tooltipstext">Name of the main contact</span></td>
+        </tr>
+        <tr>
+            <td><label>Main Designation</label></td>
+            <td class="tooltips"><input type="text" formControlName="MainContactDesgn" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" /><span class="tooltipstext">Designation
+                </span></td>
+        </tr>
+        <tr>
+            <td><label>Main Phone No</label></td>
+            <td><input type="text" formControlName="MainContactNo" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" /></td>
+        </tr>
+        <tr>
+            <td><label>Main Email Id</label></td>
+            <td><input type="text" formControlName="MainContactEmailId" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" /></td>
+        </tr>
+
+        <tr>
+            <td><label>Alternate Contact<span class="mandatory">*</span></label></td>
+            <td class="tooltips"><input type="text" formControlName="AltContact" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" /><span class="tooltipstext">Name of the main contact</span></td>
+        </tr>
+        <tr>
+            <td><label>Alternate Designation</label></td>
+            <td class="tooltips"><input type="text" formControlName="AltContactDesgn" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" /><span class="tooltipstext">Designation
+        </span></td>
+        </tr>
+        <tr>
+            <td><label>Alternate Phone No</label></td>
+            <td><input type="text" formControlName="AltContactNo" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" /></td>
+        </tr>
+        <tr>
+            <td><label>Alternate Email Id</label></td>
+            <td><input type="text" formControlName="AltContactEmailId" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" /></td>
+        </tr> 
+        <tr>
+            <td><label>Category<span class="mandatory">*</span></label></td>
+            <td class="tooltips"><input type="text" formControlName="ClientCategory" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" /><span class="tooltipstext">IT, Manufacturing, Finance, Bank, ..</span></td>
+        </tr>
+        <tr>
+            <td><label>Type<span class="mandatory">*</span></label></td>
+            <td class="tooltips"><input type="text" formControlName="ClientType" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" /><span class="tooltipstext">Client Type (Regular, CWS etc.)</span></td>
+        </tr>
+        <tr>
+            <td><label>MasterClient</label></td>
+            <td><input type="text" formControlName="MasterClientID" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" /></td>
+        </tr>
+        <tr>
+            <td><label>AccountCode</label></td>
+            <td class="tooltips"><input type="text" formControlName="ClientGLCode" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" /><span class="tooltipstext">Will be useful forposting fintxns</span></td>
+        </tr>
+    </table>
+    <table style="width:100%;">
+            <tr>
+                <td class="mandatory">* Mandatory Fields</td>
+                <td style="text-align:right;"><input type="submit" value="Save" style="width:34% !important;margin:8px !important;" class="button"/><a [routerLink]="['/login']" class="sign-up"><input type="submit" style="width:34% !important;margin:8px !important;" value="Cancel" class="button"/></a></td>
+            </tr>
+        </table>
+    </form>
+</div></div>

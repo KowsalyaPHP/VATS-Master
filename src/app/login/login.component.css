@@ -1,113 +1,102 @@
 
-
-.bg-img {
-    position: absolute;
-    /*left: 0;*/
-    top: 0;
-    right: 0;
-    bottom: 0;
-    z-index: -1;
-    width:100%;
-    height:100%;
-    background-position: center;
-    background-size: cover;
-    background-attachment: scroll;
-
-}
 #login-page .home-wrapper{
     position: relative;
     z-index: 99;
 }
-  .login {
-    margin:150px auto 0;
+.login {
+    margin:135px auto 0;
     max-width:500px;
-  }
-  .login-header {
+}
+.login-header {
     color:#fff;
     text-align:center;
     font-size:300%;
-  }
+}
 
-  .login-form {
+.login-form {
     border:.5px solid #fff;
     background:#ffffff;
     border-radius:10px;
     box-shadow:0px 0px 10px #000;
     box-sizing:border-box;
-    padding-top:35px;
-    padding-bottom:3%;
+    padding-top:15px;
     margin:5% auto;
     text-align:center;
     width:75%;
-  }
-  .login-form h4 {
+}
+.login-form h5 {
     text-align:left;
-    margin-left:40px;
-    color:#232d45;
-  }
-  .login input[type="text"],
-  .login input[type="password"] {
+    margin-left:31px;
+}
+.login input[type="text"],
+.login input[type="password"]
+{
     max-width:400px;
     width: 80%;
     line-height:2.5em;    
-    margin:1em 2em;
     border-radius:5px;
     border:1px solid #948383;
     outline:none;
     padding-left:10px;
-  }
-  .login-form input[type="button"] {
-    height:30px;
-    width:40%;
-    background:#232d45;
-    border:1px solid #f2f2f2;
-    border-radius:20px;
-    color: #f2f2f2;
-    text-transform:uppercase;
-    cursor:pointer;
-    margin:15px;
-  }
-  .sign-up{
-    color:#E86850;
+    margin-left:31px;
+}
+
+.sign-up{
+    color:#ff0000 !important;
     margin-left:10px;
     cursor:pointer;
     text-decoration:underline;
-  }
-  .no-access {
-    color:#E86850;
+}
+.no-access {
+    color:#ff0000;
     margin:auto;
     text-decoration:underline;
     cursor:pointer;
-  }
-  .try-again {
+}
+.try-again {
     color:#f2f2f2;
     text-decoration:underline;
     cursor:pointer;
-  }
-  
-  /*Media Querie*/
-  @media only screen and (min-width : 150px) and (max-width : 530px){
-    .login-form h3 {
-      text-align:center;
-      margin:0;
-    }
-    .sign-up, .no-access {
-      margin:10px 0;
-    }
-    .login-button {
-      margin-bottom:10px;
-    }
-  }
+}
 
-  #loginAs
-  {
+#loginAs{
     max-width: 411px;
-    width: 83%;
+    width: 80%;
     line-height: 2.5em;
-    margin: 1em 2em;
     border-radius: 5px;
     border: 1px solid #948383;
     outline: none;
     padding-left: 10px;
     height:38px;
+    margin-left:31px;
   }
+  .form-control{
+      width:80% !important;     
+  }
+  /*Media Querie*/
+  @media only screen and (min-width : 150px) and (max-width : 530px){
+    .login-form h3 {
+       text-align:center;
+       margin:0;     
+     }
+     .sign-up, .no-access {
+       margin:10px 0;
+     }
+     .login-button {
+       margin-bottom:10px;
+     }
+     .bg-img {
+       height:245%;
+     }
+   }
+   .invalid-feedback{
+    color: #ff0000;
+    outline: none;
+    height: 15px;
+    font-size: 13px;
+    text-align: left;
+    padding-left: 33px;
+   }    
+.form-group{
+    margin: 10px 0;
+   }
