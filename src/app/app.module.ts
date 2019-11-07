@@ -10,6 +10,10 @@ import { HomeComponent } from './home/home.component';
 import { HeaderComponent } from './header/header.component';
 import { ClientComponent } from './client/client.component';
 import { VendorComponent } from './vendor/vendor.component';
+import { VendorService } from './vendor/vendor.service';
+import { ClientService } from './client/client.service';
+import { LoginService } from './login/login.service';
+import { DashboardVendorComponent } from './dashboard-vendor/dashboard-vendor.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +22,8 @@ import { VendorComponent } from './vendor/vendor.component';
     HomeComponent,
     HeaderComponent,
     ClientComponent,
-    VendorComponent    
+    VendorComponent,
+    DashboardVendorComponent    
   ],
   imports: [
     BrowserModule,
@@ -27,7 +32,11 @@ import { VendorComponent } from './vendor/vendor.component';
     ReactiveFormsModule,
     HttpModule
   ],
-  providers: [],
+  providers: [
+    VendorService,
+    ClientService,
+    LoginService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -6,7 +6,7 @@ import {
   FormBuilder,
   Validators
 } from "@angular/forms";
-
+import { LoginService } from './login.service';
 
 @Component({
   selector: 'app-login',
@@ -22,11 +22,11 @@ export class LoginComponent implements OnInit {
   display='none';
   signdisplay='none';
   
-  constructor(private formBuilderObj: FormBuilder,private routerObj: Router) { 
+  constructor(private LoginServices: LoginService,private formBuilderObj: FormBuilder,private routerObj: Router) { 
     this.loginForm = this.formBuilderObj.group({
       username: ['', Validators.required],
-      password: ['', [Validators.required, Validators.minLength(6)]]
-      //,loginAs: ['', Validators.required]
+      password: ['', Validators.required],
+      loginAs: ['', Validators.required]
     });
   }
 
@@ -38,14 +38,39 @@ export class LoginComponent implements OnInit {
 
   validateLoginDetails(formObj) {
     this.submitted = true;
-
-    // stop here if form is invalid
     if (this.loginForm.invalid) {
         return;
     }
+    this.LoginServices.LoginUser(formObj).subscribe(
+      response => {
+        if (response != "No data") {
+          if (response == "Session MisMatch") {
+            this.routerObj.navigate(["/login"]);
+          } else {
+            this.routerObj.navigate(["/dashboard-vendor"]);
 
-    alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.loginForm.value))
-    console.log(formObj);
+          /*this.sessionID = response[0]["uniqueId"];
+            this.userID = response[0]["id"];
+            sessionStorage.setItem("uniqueSessionId", this.sessionID);
+            sessionStorage.setItem("userID", this.userID);
+            sessionStorage.setItem("usertype", response[0]["usertype"]);
+            sessionStorage.setItem("username", response[0]["username"]);
+            sessionStorage.setItem("userpwd", formObj.password);
+
+            if (response[0]["usertype"] == "Admin") {
+              this.routerObj.navigate(["/app-registration-list"]);
+            }else if (response[0]["usertype"] == "Rock Client") {
+              this.routerObj.navigate(["/client-job-details"]);
+            }else {
+              this.routerObj.navigate(["/job-details"]);
+            }*/
+          }
+        } else {
+            console.log("something is wrong with Service Execution");
+        }
+      },
+      error => console.log(error)
+    );
   }
   openForgetDialog(){
     this.modelform = 'true';

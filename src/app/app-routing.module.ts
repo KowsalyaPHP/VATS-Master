@@ -5,6 +5,7 @@ import { HomeComponent } from "./home/home.component";
 import { HeaderComponent } from './header/header.component';
 import { ClientComponent } from './client/client.component';
 import { VendorComponent } from './vendor/vendor.component';
+import { DashboardVendorComponent } from './dashboard-vendor/dashboard-vendor.component';
 
 const routes: Routes = [
 {
@@ -26,6 +27,10 @@ const routes: Routes = [
 {
   path: "vendor",
   component: VendorComponent
+},
+{
+  path: "dashboard-vendor",
+  component: DashboardVendorComponent
 }];
 
 @NgModule({

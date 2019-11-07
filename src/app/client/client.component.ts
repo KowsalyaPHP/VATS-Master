@@ -6,6 +6,7 @@ import {
   FormBuilder,
   Validators
 } from "@angular/forms";
+import { ClientService } from './client.service';
 
 @Component({
   selector: 'app-client',
@@ -14,21 +15,25 @@ import {
 })
 export class ClientComponent implements OnInit {
   submitted = false;
-  SignupForm: FormGroup;
+  SignupClientForm: FormGroup;
 
-  constructor(private formBuilderObj: FormBuilder,private routerObj: Router) {
-    this.SignupForm = this.formBuilderObj.group({
-      //ClientID: [{value: 'Auto Generated Code', disabled: true}, Validators.required],
+  constructor(private ClientServices: ClientService,private formBuilderObj: FormBuilder,private routerObj: Router) {
+    this.SignupClientForm = this.formBuilderObj.group({
       ClientName: ['', [Validators.required, Validators.minLength(6)]],
-      ClientShortName: '',
+      ClientShortName: [{value: '', disabled: true}],
       RegdAddressL1: ['', Validators.required],
       Area: ['', Validators.required],
       City: ['', Validators.required],
-      PINCODE: ['', Validators.required],
-      ClientPhoneNo: ['', Validators.required],
+      PINCODE: ['',[Validators.required,
+                Validators.pattern("[0-9]*[' '-]*[(]*[0-9]*[)-]*[' '-]*[0-9]*[' '-]*[0-9]*[' '-]*[0-9]*"),
+                Validators.minLength(6)]],
+      ClientPhoneNo: ['',[Validators.required,
+                      Validators.minLength(10),
+                      Validators.maxLength(14),
+                      Validators.pattern("[0-9]*[' '-]*[(]*[0-9]*[)-]*[' '-]*[0-9]*[' '-]*[0-9]*[' '-]*[0-9]*")]],
       ClientFaxNo: '',
       ClientMobileNo: '',
-      ClientEMAILID: ['', Validators.required],
+      ClientEMAILID: ['', [Validators.required, Validators.pattern("[a-z A-Z,0-9,.,_]+@[a-z A-Z]+[.]+[a-z A-Z,.]+")]],
      // ClientGSTNo: ['', Validators.required],
      // ClientLandMark: '',
       MainContact: ['', Validators.required],
@@ -43,11 +48,30 @@ export class ClientComponent implements OnInit {
       ClientCategory: ['', Validators.required],
       ClientType: ['', Validators.required],
       MasterClientID: '',
-      ClientGLCode:''
+      //ClientGLCode:''
     });
    }
 
   ngOnInit() {
   }
+  get f() { return this.SignupClientForm.controls; }
 
+  signUpClient(formObj) {
+    this.submitted = true;
+    if (this.SignupClientForm.invalid) {
+        return;
+    }
+    this.ClientServices.addClients(formObj).subscribe(
+      response => {
+        if (response != '') {         
+         alert("success");
+         this.routerObj.navigate(["/login"]);
+        }
+        else {         
+          console.log('something is wrong with Service  Execution');
+        }
+      },
+      error => console.log("Error Occurd!")
+    );
+  }
 }
