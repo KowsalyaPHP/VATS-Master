@@ -21,12 +21,13 @@ export class LoginComponent implements OnInit {
   userValues: any = 'false';
   display='none';
   signdisplay='none';
-  
+  sessionID:any;
+
   constructor(private LoginServices: LoginService,private formBuilderObj: FormBuilder,private routerObj: Router) { 
     this.loginForm = this.formBuilderObj.group({
       username: ['', Validators.required],
-      password: ['', Validators.required],
-      loginAs: ['', Validators.required]
+      password: ['', Validators.required]
+      /*,loginAs: ['', Validators.required]*/
     });
   }
 
@@ -44,20 +45,18 @@ export class LoginComponent implements OnInit {
     this.LoginServices.LoginUser(formObj).subscribe(
       response => {
         if (response != "No data") {
-          if (response == "Session MisMatch") {
+          if (response == "Login Failed") {
             this.routerObj.navigate(["/login"]);
-          } else {
+          } else {          
+           
+            this.sessionID = response["Userdetail"][0]["USERID"];          
+            sessionStorage.setItem("uniqueSessionId", this.sessionID);            
+            sessionStorage.setItem("userName", response["Userdetail"][0]["USERNAME"]);
+            sessionStorage.setItem("userID", formObj.username);
+            sessionStorage.setItem("password", formObj.password);
             this.routerObj.navigate(["/dashboard-vendor"]);
 
-          /*this.sessionID = response[0]["uniqueId"];
-            this.userID = response[0]["id"];
-            sessionStorage.setItem("uniqueSessionId", this.sessionID);
-            sessionStorage.setItem("userID", this.userID);
-            sessionStorage.setItem("usertype", response[0]["usertype"]);
-            sessionStorage.setItem("username", response[0]["username"]);
-            sessionStorage.setItem("userpwd", formObj.password);
-
-            if (response[0]["usertype"] == "Admin") {
+           /* if (response[0]["usertype"] == "Admin") {
               this.routerObj.navigate(["/app-registration-list"]);
             }else if (response[0]["usertype"] == "Rock Client") {
               this.routerObj.navigate(["/client-job-details"]);

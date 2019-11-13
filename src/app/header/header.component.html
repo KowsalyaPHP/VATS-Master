@@ -1,3 +1,4 @@
+<img class="background" src="../assets/img/logo.jpg" alt="logo" width="20%" height="20%">
 <div id="wrapper">
   <ul>
     <li>
@@ -8,9 +9,10 @@
     </li>    
     <li>
         <a href="#"><div>Contact</div></a>
-    </li>
-    <li id="login_width">
-        <a [routerLink]="['/login']"><div>Login</div></a>
-    </li>
+    </li>   
+    <li  *ngIf="isLoggedIn(); else showLogin;"><a [routerLink]="['/logout']"><div>Logout</div></a></li>
+    <ng-template #showLogin>
+        <li id="login_width"><a [routerLink]="['/login']"><div>Login</div></a></li>
+    </ng-template>              
   </ul>
 </div>

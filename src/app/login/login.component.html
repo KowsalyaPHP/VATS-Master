@@ -14,7 +14,7 @@
             <form class="form" role="form" autocomplete="off" id="formLogin" novalidate=""
                                  [formGroup]="loginForm"
                                 (submit)='validateLoginDetails(loginForm.value)'>
-             <div class="form-group">                
+            <!-- <div class="form-group">                
                     <h5>User Type:</h5>
                     <select id="loginAs" class="form-control" name="loginAs" formControlName="loginAs"
                         #loginAs [ngClass]="{ 'is-invalid': submitted && f.loginAs.errors }">
@@ -26,10 +26,10 @@
                     <div *ngIf="submitted && f.loginAs.errors" class="invalid-feedback">
                         <span *ngIf="f.loginAs.errors.required">Please select correct User Type.</span>                        
                     </div>
-                </div>
+                </div>-->
                 <div class="form-group">
                     <h5>User Name:</h5>
-                    <input type="text" formControlName="username" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
+                    <input type="text" formControlName="username" placeholder="Email id | Mobile Number | User id" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
                     <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
                         <div *ngIf="f.username.errors.required">Please enter User Name.</div>
                     </div>

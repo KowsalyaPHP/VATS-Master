@@ -14,6 +14,12 @@ import { VendorService } from './vendor/vendor.service';
 import { ClientService } from './client/client.service';
 import { LoginService } from './login/login.service';
 import { DashboardVendorComponent } from './dashboard-vendor/dashboard-vendor.component';
+import { FooterComponent } from './footer/footer.component';
+import { LogoutComponent } from './logout/logout.component';
+import { FormDirective } from './client/form.directive';
+import { FocusvendorDirective } from './vendor/focusvendor.directive';
+import { MenuComponent } from './menu/menu.component';
+import { MenuService } from './menu/menu.service';
 
 @NgModule({
   declarations: [
@@ -23,7 +29,12 @@ import { DashboardVendorComponent } from './dashboard-vendor/dashboard-vendor.co
     HeaderComponent,
     ClientComponent,
     VendorComponent,
-    DashboardVendorComponent    
+    DashboardVendorComponent,
+    FooterComponent,
+    LogoutComponent,
+    FormDirective,
+    FocusvendorDirective,
+    MenuComponent    
   ],
   imports: [
     BrowserModule,
@@ -35,7 +46,8 @@ import { DashboardVendorComponent } from './dashboard-vendor/dashboard-vendor.co
   providers: [
     VendorService,
     ClientService,
-    LoginService
+    LoginService,
+    MenuService
   ],
   bootstrap: [AppComponent]
 })

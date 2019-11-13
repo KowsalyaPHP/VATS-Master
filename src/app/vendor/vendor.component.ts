@@ -26,14 +26,15 @@ export class VendorComponent implements OnInit {
       Area: ['', Validators.required],
       City: ['', Validators.required],
       PINCODE: ['',[Validators.required,
-                Validators.pattern("[0-9]*[' '-]*[(]*[0-9]*[)-]*[' '-]*[0-9]*[' '-]*[0-9]*[' '-]*[0-9]*"),
+                Validators.pattern("[0-9]"),
                 Validators.minLength(6)]],
-      VendorPhoneNo: ['',[Validators.required,
+      VendorPhoneNo: '',
+      VendorFaxNo:'',
+      VendorMobileNo:['',[Validators.required,
                       Validators.minLength(10),
                       Validators.maxLength(14),
-                      Validators.pattern("[0-9]*[' '-]*[(]*[0-9]*[)-]*[' '-]*[0-9]*[' '-]*[0-9]*[' '-]*[0-9]*")]],
-      VendorFaxNo:'',
-      VendorMobileNo:'',
+                      Validators.pattern("[+]*[0-9]*")]],
+                      //pattern("[+]*[0-9]*[' '-]*[(]*[0-9]*[)-]*[' '-]*[0-9]*[' '-]*[0-9]*[' '-]*[0-9]*")
       VendorEMAILID: ['', [Validators.required, Validators.pattern("[a-z A-Z,0-9,.,_]+@[a-z A-Z]+[.]+[a-z A-Z,.]+")]],
       MainContact: ['', Validators.required],
       MainContactDesgn:'',
@@ -42,15 +43,14 @@ export class VendorComponent implements OnInit {
       AltContact: ['', Validators.required],
       AltContactDesgn:'',
       AltContactNo:'',
-      AltContactEmailId:'',   
-      TeamSize: [{value: '5', disabled: true}],
+      AltContactEmailId:'', 
+      VendorShortName:[{value: '', disabled: true}],  
+       /*TeamSize: [{value: '5', disabled: true}],
       AllowedUserCt: [{value: '5', disabled: true}],
       ConcurrentUserCt: [{value: '5', disabled: true}],
       CommonPoolYorN:'',
       OwnPoolPermitYorN:'',
-      AdminRightsYorN: '',
-      VendorShortName:[{value: '', disabled: true}],
-      /*
+      AdminRightsYorN: '',     
       VendorID: [{value: 'Auto Generated Code', disabled: true}, Validators.required],
       VendorGLCode:[{value: 'VendorID Auto Generated Code', disabled: true}],
       VendorTier:['', Validators.required],
@@ -75,7 +75,7 @@ export class VendorComponent implements OnInit {
     this.VendorServices.addVendors(formObj).subscribe(
       response => {
         if (response != '') {         
-         alert("success");
+         alert("Vendor Details Successfully added");
          this.routerObj.navigate(["/login"]);
         }
         else {         

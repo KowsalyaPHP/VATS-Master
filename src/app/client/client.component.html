@@ -7,7 +7,7 @@
 `
 <div class="signup_form">
 <div class="form-group">
-        <form class="form" role="form" autocomplete="off" id="formLogin" novalidate=""
+        <form class="form" focusInvalidInput role="form" autocomplete="off" id="formLogin" novalidate=""
         [formGroup]="SignupClientForm"
        (submit)='signUpClient(SignupClientForm.value)'>
        <h3 style="text-align: center;margin-bottom: 22px;">Client Form</h3>
@@ -34,7 +34,7 @@
         </tr>
         <tr>
             <td><label>Area<span class="mandatory">*</span></label></td>
-            <td class="tooltips"><input type="text" maxlength="40" formControlName="Area" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.Area.errors }" /><span class="tooltipstext">Royapetta</span>
+            <td class="tooltips"><input type="text" maxlength="40" formControlName="Area" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.Area.errors }" /><span class="tooltipstext">Ex:Royapetta</span>
             <div *ngIf="submitted && f.Area.errors" class="invalid-feedback">
                 <div *ngIf="f.Area.errors.required">Please enter Area.</div>
             </div>
@@ -49,7 +49,7 @@
                     <option value='3'>Mumbai</option>
                 </select>
                 <!--<input type="text" formControlName="City" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />-->
-                <span class="tooltipstext">Chennai</span>
+                <span class="tooltipstext">Ex:Chennai</span>
                 <div *ngIf="submitted && f.City.errors" class="invalid-feedback">
                     <div *ngIf="f.City.errors.required">Please enter City.</div>
                 </div>
@@ -65,12 +65,12 @@
             </td>
         </tr>
         <tr>
-            <td><label>Contact No.<span class="mandatory">*</span></label></td>
-            <td class="tooltips"><input type="text" maxlength="40" formControlName="ClientPhoneNo" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.ClientPhoneNo.errors }" /><span class="tooltipstext">Office Phone Number</span>
-            <div *ngIf="submitted && f.ClientPhoneNo.errors" class="invalid-feedback">
+            <td><label>Contact No.</label></td>
+            <td class="tooltips"><input type="text" maxlength="40" formControlName="ClientPhoneNo" class="form-control" /><span class="tooltipstext">Office Phone Number</span>
+          <!-- <div *ngIf="submitted && f.ClientPhoneNo.errors" class="invalid-feedback">
                 <div *ngIf="f.ClientPhoneNo.errors.required">Please enter Contact Number.</div>
                 <div *ngIf="f.ClientPhoneNo.errors?.pattern">Please enter Valid Contact No </div>
-            </div>
+            </div>-->
             </td>
         </tr>
         <tr>
@@ -78,12 +78,17 @@
             <td class="tooltips"><input type="text" maxlength="40" formControlName="ClientFaxNo" class="form-control"/><span class="tooltipstext">Office Fax Number</span></td>
         </tr>
         <tr>
-            <td><label>Mobile No.</label></td>
-            <td class="tooltips"><input type="text" maxlength="40" formControlName="ClientMobileNo" class="form-control" /><span class="tooltipstext">Mobile Number</span></td>
+            <td><label>Mobile No.<span class="mandatory">*</span></label></td>
+            <td class="tooltips"><input type="text" maxlength="40" formControlName="ClientMobileNo" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.ClientMobileNo.errors }" /><span class="tooltipstext">Ex: 9999900000</span>
+                <div *ngIf="submitted && f.ClientMobileNo.errors" class="invalid-feedback">
+                    <div *ngIf="f.ClientMobileNo.errors.required">Please enter Mobile Number.</div>
+                    <div *ngIf="f.ClientMobileNo.errors?.pattern">Please enter Valid Mobile Number </div>
+                </div>
+            </td>
         </tr>
         <tr>
             <td><label>Email Id<span class="mandatory">*</span></label></td>
-            <td class="tooltips"><input type="email" maxlength="40" formControlName="ClientEMAILID" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.ClientEMAILID.errors }" /><span class="tooltipstext">Contact EMAIL ID</span>
+            <td class="tooltips"><input type="email" maxlength="40" formControlName="ClientEMAILID" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.ClientEMAILID.errors }" /><span class="tooltipstext">Contact Email Id</span>
             <div *ngIf="submitted && f.ClientEMAILID.errors" class="invalid-feedback">
                 <div *ngIf="f.ClientEMAILID.errors.required">Please enter Email Id.</div>
                 <div *ngIf="f.ClientEMAILID.errors?.pattern">Please enter Valid Email Id </div>
@@ -112,7 +117,7 @@
                 </span></td>
         </tr>
         <tr>
-            <td><label>Main Phone No</label></td>
+            <td><label>Main Phone No.</label></td>
             <td><input type="text" formControlName="MainContactNo" maxlength="40" class="form-control" /></td>
         </tr>
         <tr>
@@ -122,9 +127,9 @@
 
         <tr>
             <td><label>Alternate Contact<span class="mandatory">*</span></label></td>
-            <td class="tooltips"><input type="text" formControlName="AltContact" maxlength="40" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.AltContact.errors }" /><span class="tooltipstext">Name of the main contact</span>
+            <td class="tooltips"><input type="text" formControlName="AltContact" maxlength="40" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.AltContact.errors }" /><span class="tooltipstext">Name of the Alternate contact</span>
             <div *ngIf="submitted && f.AltContact.errors" class="invalid-feedback">
-                <div *ngIf="f.AltContact.errors.required">Please enter Alternative Contact Name.</div>
+                <div *ngIf="f.AltContact.errors.required">Please enter Alternate Contact Name.</div>
             </div>
             </td>
         </tr>
@@ -134,7 +139,7 @@
         </td>
         </tr>
         <tr>
-            <td><label>Alternate Phone No</label></td>
+            <td><label>Alternate Phone No.</label></td>
             <td><input type="text" formControlName="AltContactNo" maxlength="40" class="form-control" /></td>
         </tr>
         <tr>
@@ -172,11 +177,11 @@
             </div>
             </td>
         </tr>
-        <tr>
+       <!-- <tr>
             <td><label>MasterClient</label></td>
             <td><input type="text" maxlength="8" formControlName="MasterClientID" class="form-control" /></td>
         </tr>
-        <!--<tr>
+        <tr>
             <td><label>AccountCode</label></td>
             <td class="tooltips"><input type="text" maxlength="40" formControlName="ClientGLCode" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.ClientGLCode.errors }" /><span class="tooltipstext">Will be useful forposting fintxns</span>
             <div *ngIf="submitted && f.ClientGLCode.errors" class="invalid-feedback">

@@ -7,20 +7,19 @@ import { AppComponent } from '../app.component';
 @Injectable({
   providedIn: 'root'
 })
-export class LoginService {
+export class MenuService {
 
   constructor(private http: Http) { }
 
-  public LoginUser(FormObj): Observable<any> {
+  public getMenuList(): Observable<any> {
 
     const url_login = AppComponent.urlPath + 'signin';
     const params = new URLSearchParams();
-    
-  //  params.set('Group',FormObj.loginAs);
-    params.set('userID', FormObj.username);
-    params.set('password', FormObj.password);
-    // params.set('userid', FormObj.username);
-  //  params.set('password', FormObj.password);
+    let userID = sessionStorage.getItem('userID');
+    let password = sessionStorage.getItem('password');
+   
+    params.set('userID', userID);
+    params.set('password', password);
    
     return this.http.post(url_login, params)
       .map(response => response.json()['UserRoleBasedMenudetail']).map(data => {
@@ -30,5 +29,4 @@ export class LoginService {
           return '';
       });
   }
-
 }

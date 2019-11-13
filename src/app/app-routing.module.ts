@@ -6,6 +6,9 @@ import { HeaderComponent } from './header/header.component';
 import { ClientComponent } from './client/client.component';
 import { VendorComponent } from './vendor/vendor.component';
 import { DashboardVendorComponent } from './dashboard-vendor/dashboard-vendor.component';
+import { FooterComponent } from './footer/footer.component';
+import { LogoutComponent } from './logout/logout.component';
+import { MenuComponent } from './menu/menu.component';
 
 const routes: Routes = [
 {
@@ -31,6 +34,18 @@ const routes: Routes = [
 {
   path: "dashboard-vendor",
   component: DashboardVendorComponent
+},
+{
+  path: "footer",
+  component: FooterComponent
+},
+{
+  path: "logout",
+  component: LogoutComponent
+},
+{
+  path: "menu",
+  component: MenuComponent
 }];
 
 @NgModule({

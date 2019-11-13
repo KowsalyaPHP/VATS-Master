@@ -8,7 +8,7 @@
 <div class="signup_form">
 <div class="form-group">
         <form class="form" role="form" autocomplete="off" id="SignupVendorForm" novalidate=""
-        [formGroup]="SignupVendorForm" (submit)='signUpVendor(SignupVendorForm.getRawValue())'>
+        [formGroup]="SignupVendorForm" appFocusvendor (submit)='signUpVendor(SignupVendorForm.getRawValue())'>
        <h3 style="text-align: center;margin-bottom: 22px;">Vendor Form</h3>
       <table style="width:100%;">
            
@@ -42,7 +42,7 @@
         </tr>
         <tr>
             <td><label>Area<span class="mandatory">*</span></label></td>
-            <td class="tooltips"><input type="text" maxlength="40" formControlName="Area" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.Area.errors }" /><span class="tooltipstext">Mulund</span>
+            <td class="tooltips"><input type="text" maxlength="40" formControlName="Area" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.Area.errors }" /><span class="tooltipstext">Ex: Mulund</span>
             <div *ngIf="submitted && f.Area.errors" class="invalid-feedback">
                 <div *ngIf="f.Area.errors.required">Please enter Area.</div>
             </div>
@@ -57,7 +57,7 @@
                     <option  value="2">Coimbatore</option>
                     <option  value="2">Chennai</option>
                     <option value="3">Mumbai</option>
-                </select><span class="tooltipstext">Mumbai</span> 
+                </select><span class="tooltipstext">Ex: Mumbai</span> 
                 <div *ngIf="submitted && f.City.errors" class="invalid-feedback">
                     <div *ngIf="f.City.errors.required">Please enter City.</div>
                 </div></td>
@@ -76,12 +76,12 @@
             
         </tr>
         <tr> 
-            <td><label>Contact No.<span class="mandatory">*</span></label></td>
-            <td class="tooltips"><input type="text" maxlength="40" formControlName="VendorPhoneNo" class="form-control" required [ngClass]="{ 'is-invalid': submitted && f.VendorPhoneNo.errors }" /> <span class="tooltipstext">Office Phone Number</span>
-            <div *ngIf="submitted && f.VendorPhoneNo.errors" class="invalid-feedback">
+            <td><label>Contact No.</label></td>
+            <td class="tooltips"><input type="text" maxlength="40" formControlName="VendorPhoneNo" class="form-control"/> <span class="tooltipstext">Office Phone Number</span>
+           <!-- <div *ngIf="submitted && f.VendorPhoneNo.errors" class="invalid-feedback">
                 <div *ngIf="f.VendorPhoneNo.errors.required">Please enter Contact No.</div>
                 <div *ngIf="f.VendorPhoneNo.errors?.pattern">Please enter Valid Contact No </div>
-            </div>
+            </div>-->
             </td>    
             
         </tr>
@@ -90,17 +90,21 @@
             <td class="tooltips"><input type="text" maxlength="40" formControlName="VendorFaxNo" class="form-control" /> <span class="tooltipstext">Office Fax Number</span></td> 
         </tr>
         <tr>
-            <td><label>Mobile No.</label></td>
-            <td class="tooltips"><input type="text" maxlength="40" formControlName="VendorMobileNo" class="form-control" /><span class="tooltipstext">Mobile Number</span>
+            <td><label>Mobile No.<span class="mandatory">*</span></label></td>
+            <td class="tooltips"><input type="text" maxlength="40" formControlName="VendorMobileNo" class="form-control"  required [ngClass]="{ 'is-invalid': submitted && f.VendorMobileNo.errors }" /><span class="tooltipstext">Ex: 9999900000</span>
+                <div *ngIf="submitted && f.VendorMobileNo.errors" class="invalid-feedback">
+                    <div *ngIf="f.VendorMobileNo.errors.required">Please enter Mobile Number</div>
+                    <div *ngIf="f.VendorMobileNo.errors?.pattern">Please enter Valid Mobile Number </div>
+                </div>
             </td>
             
         </tr>
         <tr>
             <td><label>Email Id<span class="mandatory">*</span></label></td>
-            <td class="tooltips"><input type="text" maxlength="40" formControlName="VendorEMAILID" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.VendorEMAILID.errors }" /><span class="tooltipstext">Contact EMAIL ID</span>
+            <td class="tooltips"><input type="text" maxlength="40" formControlName="VendorEMAILID" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.VendorEMAILID.errors }" /><span class="tooltipstext">Contact Email Id</span>
             <div *ngIf="submitted && f.VendorEMAILID.errors" class="invalid-feedback">
                 <div *ngIf="f.VendorEMAILID.errors.required">Please enter Email Id.</div>
-                <div *ngIf="f.VendorEMAILID.errors?.pattern">Please enter Valid Email Id </div>
+                <div *ngIf="f.VendorEMAILID.errors?.pattern">Please enter Valid Email Id.</div>
             </div>
             </td>
         </tr>
@@ -133,23 +137,23 @@
             <td><input type="text" maxlength="40" formControlName="MainContactEmailId" class="form-control" /></td>
         </tr>
         <tr>
-            <td><label>Alternative Contact<span class="mandatory">*</span></label></td>
-            <td class="tooltips"><input type="text" maxlength="40" formControlName="AltContact" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.AltContact.errors }" /><span class="tooltipstext">Name of the main contact</span>
+            <td><label>Alternate Contact<span class="mandatory">*</span></label></td>
+            <td class="tooltips"><input type="text" maxlength="40" formControlName="AltContact" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.AltContact.errors }" /><span class="tooltipstext">Name of the alternate contact</span>
             <div *ngIf="submitted && f.AltContact.errors" class="invalid-feedback">
-                <div *ngIf="f.AltContact.errors.required">Please enter Alternative Contact Name.</div>
+                <div *ngIf="f.AltContact.errors.required">Please enter Alternate Contact Name.</div>
             </div>
             </td>
         </tr>
         <tr>
-            <td><label>Alternative Designation</label></td>
+            <td><label>Alternate Designation</label></td>
             <td class="tooltips"><input type="text" maxlength="40" formControlName="AltContactDesgn" class="form-control" /><span class="tooltipstext">Designation</span></td>
         </tr>
         <tr>
-            <td><label>Alternative Phone No.</label></td>
+            <td><label>Alternate Phone No.</label></td>
             <td><input type="text" maxlength="40" formControlName="AltContactNo" class="form-control" /></td>
         </tr>
         <tr>
-            <td><label>Alternative Email Id</label></td>
+            <td><label>Alternate Email Id</label></td>
             <td><input type="text" maxlength="40" formControlName="AltContactEmailId" class="form-control" /></td>
         </tr>
         <!--<tr>
@@ -169,7 +173,7 @@
                     <option  value='3'>Platinum</option>
                     <option  value='4'>Silver</option>
                 </select>
-                <!--<input type="text" formControlName="VendorTier" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />--><!--<span class="tooltipstext">Gold, Platinum, Silver, Bronze etc</span></td>
+                <input type="text" formControlName="VendorTier" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />--><!--<span class="tooltipstext">Gold, Platinum, Silver, Bronze etc</span></td>
         </tr>
         <tr>
             <td><label>Expertise<span class="mandatory">*</span></label></td>
@@ -179,30 +183,30 @@
             <td><label>Type<span class="mandatory">*</span></label></td>
             <td class="tooltips"><input type="text" formControlName="VendorType" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" /><span class="tooltipstext">Default can be VENDR</span>
             </td>
-        </tr>-->
+        </tr>
         <tr>
             <td><label>Team Size</label></td>
             <td><input type="text" maxlength="40" formControlName="TeamSize" class="form-control"/></td>
         </tr>
-       <!-- <tr>
+        <tr>
             <td><label>AccountCode</label></td>
             <td class="tooltips"><input type="text" formControlName="VendorGLCode" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" /><span class="tooltipstext">Will be useful forposting fintxns
             </span></td>
-        </tr>-->
+        </tr>
         <tr>
             <td><label>Max User Count<span class="mandatory">*</span></label></td>
             <td><input type="text" [value]="SignupVendorForm.controls['AllowedUserCt'].value" maxlength="4" formControlName="AllowedUserCt" class="form-control"/>
-            <!--<div *ngIf="submitted && f.AllowedUserCt.errors" class="invalid-feedback">
+            <div *ngIf="submitted && f.AllowedUserCt.errors" class="invalid-feedback">
                 <div *ngIf="f.AllowedUserCt.errors.required">Please enter Max User Count.</div>
-            </div>-->
+            </div>
             </td>
         </tr>
         <tr>
             <td><label>Concurrent User Count<span class="mandatory">*</span></label></td>
             <td><input type="text" maxlength="4" formControlName="ConcurrentUserCt" class="form-control"/>
-            <!--<div *ngIf="submitted && f.ConcurrentUserCt.errors" class="invalid-feedback">
+            <div *ngIf="submitted && f.ConcurrentUserCt.errors" class="invalid-feedback">
                 <div *ngIf="f.ConcurrentUserCt.errors.required">Please enter Concurrent User Count.</div>
-            </div>-->
+            </div>
             </td>
             
         </tr>
@@ -213,11 +217,11 @@
                     <option value='1'>Y</option>
                     <option  value='' selected>N</option>
                 </select>
-                <!--<div *ngIf="submitted && f.CommonPoolYorN.errors" class="invalid-feedback">
+                <div *ngIf="submitted && f.CommonPoolYorN.errors" class="invalid-feedback">
                     <div *ngIf="f.CommonPoolYorN.errors.required">Please enter Detail.</div>
-                </div>-->
+                </div>
             </td>
-               <!-- <input type="text" formControlName="CommonPoolYorN" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" /></td>-->
+               <input type="text" formControlName="CommonPoolYorN" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" /></td>
                
         </tr>
         <tr>
@@ -225,23 +229,23 @@
             <td><select disabled placeholder="OwnPoolPermitYorN" class="form-control" id="OwnPoolPermitYorN" name="OwnPoolPermitYorN" formControlName="OwnPoolPermitYorN" >
                     <option value='1'>Y</option>
                     <option  value='' selected>N</option>
-                </select><!--<input type="text" formControlName="OwnPoolPermitYorN" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />-->
+                </select><input type="text" formControlName="OwnPoolPermitYorN" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />-->
                <!--<div *ngIf="submitted && f.OwnPoolPermitYorN.errors" class="invalid-feedback">
                     <div *ngIf="f.OwnPoolPermitYorN.errors.required">Please enter Detail.</div>
                 </div>
-            --></td>
+            </td>
         </tr>
         <tr>
             <td><label>Admin Rights Y/N?<span class="mandatory">*</span></label></td>
             <td><select disabled placeholder="AdminRightsYorN" class="form-control" id="AdminRightsYorN" name="AdminRightsYorN" formControlName="AdminRightsYorN" >
                     <option value='' selected>Y</option>
                     <option  value="2">N</option>
-                </select><!--<input type="text" formControlName="AdminRightsYorN" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />-->
+                </select><input type="text" formControlName="AdminRightsYorN" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />-->
                 <!--<div *ngIf="submitted && f.AdminRightsYorN.errors" class="invalid-feedback">
                     <div *ngIf="f.AdminRightsYorN.errors.required">Please enter Detail.</div>
-                </div>-->
+                </div>
             </td>
-        </tr>
+        </tr>-->
     </table>
     <table style="width:100%;">
         <tr>
