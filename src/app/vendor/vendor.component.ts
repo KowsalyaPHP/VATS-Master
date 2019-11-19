@@ -33,7 +33,7 @@ export class VendorComponent implements OnInit {
       VendorMobileNo:['',[Validators.required,
                       Validators.minLength(10),
                       Validators.maxLength(14),
-                      Validators.pattern("[+]*[0-9]*")]],
+                      Validators.pattern("[0-9]*")]],
                       //pattern("[+]*[0-9]*[' '-]*[(]*[0-9]*[)-]*[' '-]*[0-9]*[' '-]*[0-9]*[' '-]*[0-9]*")
       VendorEMAILID: ['', [Validators.required, Validators.pattern("[a-z A-Z,0-9,.,_]+@[a-z A-Z]+[.]+[a-z A-Z,.]+")]],
       MainContact: ['', Validators.required],
@@ -60,7 +60,7 @@ export class VendorComponent implements OnInit {
       VendorLandMark:''
       VendorShortName:'',VendorStatus: ['', Validators.required],
       VendorStatusDate:'',*/
-    });
+    });  
    }
 
   ngOnInit() {
@@ -75,7 +75,7 @@ export class VendorComponent implements OnInit {
     this.VendorServices.addVendors(formObj).subscribe(
       response => {
         if (response != '') {         
-         alert("Vendor Details Successfully added");
+         alert("Welcome to VATS as New Vendor.\nCheck your Email Id.");
          this.routerObj.navigate(["/login"]);
         }
         else {         

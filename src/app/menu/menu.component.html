@@ -1,21 +1,14 @@
-<!--<div class="drop">
-    <ul class="drop_menu">
-      <li *ngFor="let row of my_menu"><a href='#'> {{ row.menu }}</a>
-        <ul>
-         <li *ngFor="let submenu of row.submenu"><a href='#'>{{ row.submenu }}</a></li>            
-        </ul>
-      </li>       
-    </ul>
-</div>-->
+
 <nav>
   <ul>
-      <li *ngFor="let Mainmenu of menuList['Menudetails']"><a href='#'> {{ Mainmenu.MainMenuTitle }}</a>   
-      <ul *ngIf="Mainmenu.SubMenuTitle.length != 0 ">
-          <li><a href='#'>{{Mainmenu.SubMenuTitle}}</a></li>         
-      </ul>        
-      </li>
-    
-  </ul>
+        <li *ngFor="let Mainmenu of menuList"><a [routerLink]="Mainmenu.MainMenuLink">{{ Mainmenu.MainMenuTitle }}</a>   
+            <ul *ngIf="Mainmenu.SubMenuTitle.length != 0">
+                <li><a [routerLink]="Mainmenu.SubMenuLink">{{Mainmenu.SubMenuTitle}}</a></li>                 
+            </ul>        
+        </li>
+        <li style="float:right;color:#ffffff;padding: 12px 10px;font-size: 15px;border:none;width:auto;">Welcome - {{username}}</li>
+       
+</ul>  
 </nav><!--<nav>
     <ul>
         <li *ngFor="let Mainmenu of menuList['Menudetails']"><a href='#'> {{ Mainmenu.MainMenuTitle }}</a>   

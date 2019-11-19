@@ -14,5 +14,4 @@ export class LogoutComponent implements OnInit {
     sessionStorage.clear();   
     this.routerObj.navigate(['/login']);
   }
-
 }

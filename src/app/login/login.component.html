@@ -3,7 +3,7 @@
 <header id="login">
     <!-- Background Image -->
     <div class="bg-img">
-        <img class="background" src="../assets/img/laptop.jpg" alt="logo" width="100%" height="100%">
+        <img class="background" src="assets/img/laptop.jpg" alt="logo" width="100%" height="100%">
     </div>
 </header>
 <br/>
@@ -11,7 +11,7 @@
     <div class="login">                
         <div class="login-form">
             <h3>Login</h3>
-            <form class="form" role="form" autocomplete="off" id="formLogin" novalidate=""
+            <form class="form" #formDirectisve="ngForm" role="form" autocomplete="off" id="formLogin" novalidate=""
                                  [formGroup]="loginForm"
                                 (submit)='validateLoginDetails(loginForm.value)'>
             <!-- <div class="form-group">                
@@ -43,7 +43,8 @@
                     </div>
                 </div>
                 <input type="submit" value="Login" class="login-button button"/>
-                <br>
+                <p id="loader" style="margin:-6px 0px -27px 0px;display:none;"><img class="loading-img" src="assets/img/load.gif"    alt="loader">
+                </p><br>
                 <p class="no-access" (click)="openForgetDialog()">Forgot your Password?</p>
                 <p>New to VATS?<a class="sign-up" (click)="openSignDialog()">Sign Up!</a></p>     
             </form>
@@ -89,7 +90,7 @@
               </div> -->
                 <div class="text-center">    
                   <h3>JOIN THE MOST ADVANCED REQUIREMENT MARKETPLACE</h3>
-                       <div> <a [routerLink]="['/client']"><input class="button login-button" value="Sign Up as Client" type="submit"></a></div>
+                       <div> <a [routerLink]="['/client/0']"><input class="button login-button" value="Sign Up as Client" type="submit"></a></div>
                        <div> <a [routerLink]="['/vendor']"><input class="button login-button" value="Sign Up as Vendor" type="submit"></a></div>
                 </div>          
                <div class="modal-footer">

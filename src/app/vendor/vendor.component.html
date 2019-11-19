@@ -1,7 +1,7 @@
 <header id="login">
     <!-- Background Image -->
     <div class="bg-img">
-        <img class="background" src="../assets/img/laptop.jpg" alt="logo" width="100%" height="100%">
+        <img class="background" src="assets/img/laptop.jpg" alt="logo" width="100%" height="100%">
     </div>
 </header>
 
@@ -91,7 +91,7 @@
         </tr>
         <tr>
             <td><label>Mobile No.<span class="mandatory">*</span></label></td>
-            <td class="tooltips"><input type="text" maxlength="40" formControlName="VendorMobileNo" class="form-control"  required [ngClass]="{ 'is-invalid': submitted && f.VendorMobileNo.errors }" /><span class="tooltipstext">Ex: 9999900000</span>
+            <td class="tooltips"><input type="text" maxlength="10" formControlName="VendorMobileNo" class="form-control"  required [ngClass]="{ 'is-invalid': submitted && f.VendorMobileNo.errors }" /><span class="tooltipstext">Ex: 9999900000</span>
                 <div *ngIf="submitted && f.VendorMobileNo.errors" class="invalid-feedback">
                     <div *ngIf="f.VendorMobileNo.errors.required">Please enter Mobile Number</div>
                     <div *ngIf="f.VendorMobileNo.errors?.pattern">Please enter Valid Mobile Number </div>

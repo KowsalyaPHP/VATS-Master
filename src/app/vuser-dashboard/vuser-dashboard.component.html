@@ -1,0 +1,27 @@
+
+<app-header></app-header><br/>
+<app-menu></app-menu><br/>
+<div class="content">
+  <h3 style="text-align: center;">Vendor User Dashboard</h3><br/>
+  <table #dataTable class="display" id="vendorUserList" style="width:100%" *ngIf="vendorUserList!=[]">
+    <thead>
+        <tr>
+            <th>Vendor ID</th>
+            <th>User Id</th>
+            <th>User Roles</th>
+            <th>User Name</th>
+            <th>Vendor Status</th>
+        </tr>       
+    </thead>
+    <tbody>
+        <tr  *ngFor="let item of vendorUserList">
+            <td>{{item.VENDORID}}</td>
+            <td>{{item.USERID}}</td>
+            <td>{{item.USERROLES}}</td>
+            <td>{{item.USERNAME}}</td>
+            <td>{{item.VENDORSTATUS}}</td>
+        </tr>        
+</table>
+</div>
+<br/><br/>
+<app-footer></app-footer>

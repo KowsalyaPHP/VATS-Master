@@ -14,13 +14,9 @@ export class LoginService {
   public LoginUser(FormObj): Observable<any> {
 
     const url_login = AppComponent.urlPath + 'signin';
-    const params = new URLSearchParams();
-    
-  //  params.set('Group',FormObj.loginAs);
+    const params = new URLSearchParams();   
     params.set('userID', FormObj.username);
     params.set('password', FormObj.password);
-    // params.set('userid', FormObj.username);
-  //  params.set('password', FormObj.password);
    
     return this.http.post(url_login, params)
       .map(response => response.json()['UserRoleBasedMenudetail']).map(data => {

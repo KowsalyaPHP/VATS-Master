@@ -1,0 +1,26 @@
+<app-header></app-header><br/>
+<app-menu></app-menu><br/>
+  <h3 style="text-align: center;">Client User Dashboard</h3><br/>
+  <div class="content">
+  <table #dataTable class="display" id="clientUserList" style="width:100%" *ngIf="clientUserList!=[]">
+    <thead>
+        <tr>
+            <th>Client ID</th>
+            <th>User Id</th>
+            <th>User Roles</th>
+            <th>User Name</th>
+            <th>Client Status</th>                   
+        </tr>       
+    </thead> 
+    <tbody>
+        <tr  *ngFor="let item of clientUserList">
+            <td>{{item.CLIENTID}}</td>
+            <td>{{item.USERID}}</td>
+            <td>{{item.USERROLES}}</td>
+            <td>{{item.USERNAME}}</td>
+            <td>{{item.CLIENTSTATUS}}</td>
+        </tr>        
+</table>
+</div>
+<br/><br/>
+<app-footer></app-footer>

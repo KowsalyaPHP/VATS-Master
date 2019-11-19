@@ -1,0 +1,46 @@
+<app-header></app-header><br/>
+<app-menu></app-menu><br/>
+<div class="form-group">
+        <form class="form" role="form" autocomplete="off" id="AddClientUser" novalidate=""
+        [formGroup]="AddClientUser" appFocusclient (submit)='addClientUser(AddClientUser.getRawValue())'>
+       <h3 style="text-align: center;margin-bottom: 22px;">Client User Form</h3>
+      <table style="width:40%;margin:auto;">
+       <tr>
+            <td><label>Mr/Ms</label></td>
+            <td><input type="text" id="UserMrMs"  maxlength="80" formControlName="UserMrMs" class="form-control"required/></td>          
+       </tr>
+       <tr>
+            <td><label>Name</label></td>
+            <td><input type="text" id="UserName"  maxlength="80" formControlName="UserName" class="form-control"required/></td>          
+       </tr>    
+       <tr>
+            <td><label>Remarks</label></td>
+            <td><input type="text" id="UserRemarks"  maxlength="80" formControlName="UserRemarks" class="form-control"required/></td>          
+       </tr>   
+       <tr>
+            <td><label>Email Id</label></td>
+            <td><input type="text" id="UserEmail"  maxlength="80" formControlName="UserEmail" class="form-control"required/></td>          
+       </tr>
+       <tr>
+            <td><label>Mobile Number</label></td>
+            <td><input type="text" id="UserContactNo"  maxlength="80" formControlName="UserContactNo" class="form-control"required/></td>          
+       </tr>
+       <tr>             
+          <td></td>
+          <td><input type="submit" value="Save" style="margin:8px !important;" class="button"/></td>
+        </tr>
+        </table>
+      </form></div>
+<br/><br/>
+<app-footer></app-footer>
+
+
+
+
+
+
+
+
+
+
+

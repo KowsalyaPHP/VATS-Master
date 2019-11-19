@@ -1,0 +1,19 @@
+<app-header></app-header><br/>
+<app-menu></app-menu><br/>
+<h1 style="text-align: center;">Welcome to Vendor Profile Page</h1><br/>
+<div>
+    <table #dataTable class="display" id="vendorprofile" style="width:22%;margin:auto;"  *ngFor="let item of vendorprofile">
+        <tr><td><b>Vendor ID</b></td><td>{{item.VendorID}}</td></tr>
+        <tr><td><b>Vendor Name</b></td><td>{{item.VendorName}}</td></tr>
+        <tr><td><b>Vendor Short Name</b></td><td>{{item.VendorShortName}}</td></tr>
+        <tr><td><b>Address</b></td><td>{{item.RegdAddressL1}}</td></tr>
+        <tr><td><b>Area</b></td><td>{{item.Area}}</td></tr>
+        <tr><td><b>City</b></td><td>{{item.City}}</td></tr>
+        <tr><td><b>PINCODE</b></td><td>{{item.PINCODE}}</td></tr>
+        <tr><td><b>Phone Number</b></td><td>{{item.VendorPhoneNo}}</td></tr>
+        <tr><td><b>Email Id</b></td><td>{{item.VendorEMAILID}}</td></tr>
+        <tr><td><b>Vendor Type</b></td><td>{{item.VendorType}}</td></tr>       
+    </table>
+</div>
+<br/><br/>
+<app-footer></app-footer>

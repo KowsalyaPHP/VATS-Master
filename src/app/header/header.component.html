@@ -1,18 +1,18 @@
-<img class="background" src="../assets/img/logo.jpg" alt="logo" width="20%" height="20%">
+<img style="margin-left:53px;" class="background" src="assets/img/logoo.png" alt="logo" width="15%" height="15%">
 <div id="wrapper">
   <ul>
     <li>
-        <a [routerLink]="['/']"><div>Home</div></a>
+        <a [routerLink]="['/']"><span>Home</span></a>
     </li>
     <li>
-        <a href="#"><div>About us</div></a>
+        <a href="#"><span>About us</span></a>
     </li>    
     <li>
-        <a href="#"><div>Contact</div></a>
+        <a href="#"><span>Contact</span></a>
     </li>   
-    <li  *ngIf="isLoggedIn(); else showLogin;"><a [routerLink]="['/logout']"><div>Logout</div></a></li>
+    <li  *ngIf="isLoggedIn(); else showLogin;"><a [routerLink]="['/logout']"><span>Logout</span></a></li>
     <ng-template #showLogin>
-        <li id="login_width"><a [routerLink]="['/login']"><div>Login</div></a></li>
+        <li id="login_width"><a [routerLink]="['/login']"><span>Login</span></a></li>
     </ng-template>              
   </ul>
 </div>

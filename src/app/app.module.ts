@@ -20,6 +20,17 @@ import { FormDirective } from './client/form.directive';
 import { FocusvendorDirective } from './vendor/focusvendor.directive';
 import { MenuComponent } from './menu/menu.component';
 import { MenuService } from './menu/menu.service';
+import { DashboardClientComponent } from './dashboard-client/dashboard-client.component';
+import { EmagineComponent } from './emagine/emagine.component';
+import { VendorprofileComponent } from './vendorprofile/vendorprofile.component';
+import { ClientprofileComponent } from './clientprofile/clientprofile.component';
+import { ClientprofileService } from './clientprofile/clientprofile.service';
+import { VendorprofileService } from './vendorprofile/vendorprofile.service';
+import { UserComponent } from './user/user.component';
+import { VendorUserComponent } from './vendor-user/vendor-user.component';
+import { ClientUserComponent } from './client-user/client-user.component';
+import { VuserDashboardComponent } from './vuser-dashboard/vuser-dashboard.component';
+import { CuserDashboardComponent } from './cuser-dashboard/cuser-dashboard.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +45,16 @@ import { MenuService } from './menu/menu.service';
     LogoutComponent,
     FormDirective,
     FocusvendorDirective,
-    MenuComponent    
+    MenuComponent,
+    DashboardClientComponent,
+    EmagineComponent,
+    VendorprofileComponent,
+    ClientprofileComponent,
+    UserComponent,
+    VendorUserComponent,
+    ClientUserComponent,
+    VuserDashboardComponent,
+    CuserDashboardComponent    
   ],
   imports: [
     BrowserModule,
@@ -47,8 +67,10 @@ import { MenuService } from './menu/menu.service';
     VendorService,
     ClientService,
     LoginService,
-    MenuService
+    MenuService,
+    ClientprofileService,
+    VendorprofileService
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent]  
 })
 export class AppModule { }

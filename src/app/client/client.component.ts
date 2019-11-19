@@ -1,4 +1,4 @@
-import { Component, OnInit , Directive, HostListener, ElementRef} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from "@angular/router";
 import {
   FormControl,
@@ -13,14 +13,13 @@ import { ClientService } from './client.service';
   templateUrl: './client.component.html',
   styleUrls: ['./client.component.css']
 })
-@Directive({
-  selector: '[focusInvalidInput]'
-})
+
 export class ClientComponent implements OnInit {
   submitted = false;
   SignupClientForm: FormGroup;
+  id:any;
 
-  constructor(private ClientServices: ClientService,private formBuilderObj: FormBuilder,private routerObj: Router) {
+  constructor(private ClientServices: ClientService,private formBuilderObj: FormBuilder,private routerObj: Router,private route: ActivatedRoute) {
     this.SignupClientForm = this.formBuilderObj.group({
       ClientName: ['', [Validators.required]],
       ClientShortName: [{value: '', disabled: true}],
@@ -35,7 +34,7 @@ export class ClientComponent implements OnInit {
       ClientMobileNo: ['',[Validators.required,
         Validators.minLength(10),
         Validators.maxLength(14),
-        Validators.pattern("[+]*[0-9]*")]],
+        Validators.pattern("[0-9]*")]],
       ClientEMAILID: ['', [Validators.required, Validators.pattern("[a-z A-Z,0-9,.,_]+@[a-z A-Z]+[.]+[a-z A-Z,.]+")]],
      // ClientGSTNo: ['', Validators.required],
      // ClientLandMark: '',
@@ -53,7 +52,20 @@ export class ClientComponent implements OnInit {
       //MasterClientID: '',
       //ClientGLCode:''
     });
+    //var USERCATEGORY = sessionStorage.getItem("USERCATEGORY"); 
+    var userId = sessionStorage.getItem("uniqueSessionId");    
+    var userName = sessionStorage.getItem("userName");   
+    var USERCATEGORY = "C1"; 
     
+    if (userName){
+      this.routerObj.navigate(['/client', userId]);
+      this.route.params.subscribe(params => {
+        this.id = params['id'];
+        alert(this.id);
+      });
+    } 
+
+   
    }
 
 
@@ -70,11 +82,11 @@ export class ClientComponent implements OnInit {
     this.ClientServices.addClients(formObj).subscribe(
       response => {
         if (response != '') {         
-         alert("Client Detail Successfully added");
+         alert("Welcome to VATS as New Client.\nCheck your Email Id.");
          this.routerObj.navigate(["/login"]);
         }
         else {         
-          console.log('something is wrong with Service  Execution');
+          console.log('something is wrong with Service Execution');
         }
       },
       error => console.log("Error Occurd!")
