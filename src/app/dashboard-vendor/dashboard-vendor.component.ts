@@ -24,6 +24,32 @@ export class DashboardVendorComponent implements OnInit {
    }
 
   ngOnInit() {
+   /* $(document).ready(function(){  
+      $(".dropdown").click(function(){     
+          $(this).find(".dropdown-menu").slideToggle("fast");
+      });
+    });
+    $(document).ready(function() {
+
+      $('#newTable a').click(function() {
+          alert('d')
+      });
+  
+  });
+     /* $('body').on("click", "td", $(document).ready( function() {
+        alert('ss'); $(this).find(".dropdown-menu").slideToggle("fast");
+      }));
+      $(document).ready(function(){  
+      $("dropdown").click(function(){     
+          $(this).find(".dropdown-menu").slideToggle("fast");
+      });
+  });
+  $(document).on("click", function(event){
+      var $trigger = $(".dropdown");
+      if($trigger !== event.target && !$trigger.has(event.target).length){
+          $(".dropdown-menu").slideUp("fast");
+      }            
+  });*/
   }
  
   ngAfterViewInit() {
@@ -33,7 +59,16 @@ export class DashboardVendorComponent implements OnInit {
       });      
     }, 1000);    
   }
-
+  myClickFunction(event) {    
+    $(".dropdown-menu").show();
+    event.stopPropagation();
+    $(document).on("click", function(event){
+      var $trigger = $(".dropdown");
+      if($trigger !== event.target && !$trigger.has(event.target).length){
+          $(".dropdown-menu").slideUp("fast");
+      }            
+  });
+ }
   getVendorDetails() {   
     this.DashboardVendorServices.getVendorList().subscribe(
       response => {

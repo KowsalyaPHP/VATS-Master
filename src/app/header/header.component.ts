@@ -6,13 +6,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
- 
+  Session=false;
   constructor() { 
+
    }
 
    isLoggedIn(){
     var sessionId = sessionStorage.getItem("uniqueSessionId");
     if(sessionId){
+      this.Session=true;
       return true;
     }
     else{

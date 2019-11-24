@@ -31,6 +31,12 @@ import { VendorUserComponent } from './vendor-user/vendor-user.component';
 import { ClientUserComponent } from './client-user/client-user.component';
 import { VuserDashboardComponent } from './vuser-dashboard/vuser-dashboard.component';
 import { CuserDashboardComponent } from './cuser-dashboard/cuser-dashboard.component';
+import { DashboardRequisitionComponent } from './dashboard-requisition/dashboard-requisition.component';
+import { VuserprofileComponent } from './vuserprofile/vuserprofile.component';
+import { CuserprofileComponent } from './cuserprofile/cuserprofile.component';
+import { ClienteditUserComponent } from './clientedit-user/clientedit-user.component';
+import { VendoreditUserComponent } from './vendoredit-user/vendoredit-user.component';
+import { CommonService } from "./shared/services/common.service";
 
 @NgModule({
   declarations: [
@@ -54,7 +60,12 @@ import { CuserDashboardComponent } from './cuser-dashboard/cuser-dashboard.compo
     VendorUserComponent,
     ClientUserComponent,
     VuserDashboardComponent,
-    CuserDashboardComponent    
+    CuserDashboardComponent,
+    DashboardRequisitionComponent,
+    VuserprofileComponent,
+    CuserprofileComponent,
+    ClienteditUserComponent,
+    VendoreditUserComponent    
   ],
   imports: [
     BrowserModule,
@@ -69,7 +80,8 @@ import { CuserDashboardComponent } from './cuser-dashboard/cuser-dashboard.compo
     LoginService,
     MenuService,
     ClientprofileService,
-    VendorprofileService
+    VendorprofileService,
+    CommonService
   ],
   bootstrap: [AppComponent]  
 })

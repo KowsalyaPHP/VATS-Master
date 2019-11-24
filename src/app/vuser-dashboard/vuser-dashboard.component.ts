@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router ,ActivatedRoute} from '@angular/router';
 import { VuserDashboardService } from './vuser-dashboard.service';
 declare var $: any
 
@@ -11,13 +11,14 @@ declare var $: any
 export class VuserDashboardComponent implements OnInit {
 
   vendorUserList:[];
- 
-  constructor(private routerObj: Router,private VuserDashboardServices: VuserDashboardService) {
+  userId:any;
+
+  constructor(private routerObj: Router,private VuserDashboardServices: VuserDashboardService,private route: ActivatedRoute) {
     
     var userName = sessionStorage.getItem("userName");
     var USERCATEGORY = sessionStorage.getItem("USERCATEGORY"); 
     
-    if (!userName && USERCATEGORY != "C"){
+    if (!userName){
       this.routerObj.navigate(['/login']);
     }    
     this.getvendorUserLists();
@@ -33,9 +34,23 @@ export class VuserDashboardComponent implements OnInit {
       });      
     }, 1000);    
   }
-
+ actionMethod(event) {    
+    $(".dropdown-menu").show();
+    event.stopPropagation();
+    $(document).on("click", function(event){
+      var $trigger = $(".dropdown");
+      if($trigger !== event.target && !$trigger.has(event.target).length){
+          $(".dropdown-menu").slideUp("fast");
+      }            
+   });
+  }
   getvendorUserLists() {   
-    this.VuserDashboardServices.getvendorUserList().subscribe(
+
+    this.route.params.subscribe(params => {
+      this.userId = params['id'];
+    });
+
+    this.VuserDashboardServices.getvendorUserList(this.userId).subscribe(
       response => {
         if (response != "No data") {
           if (response == "Login Failed") {           

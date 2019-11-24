@@ -11,14 +11,14 @@ export class CuserDashboardService {
 
   constructor(private http: Http) { }
   
-  public getClientUserList(): Observable<any> {
+  public getClientUserList(userId:any): Observable<any> {
 
     const url_userlist = AppComponent.urlPath + 'userdashboard';
     const params = new URLSearchParams();  
 
-    params.set('UserCategory',sessionStorage.getItem('USERCATEGORY'));
-    params.set('userid',sessionStorage.getItem('uniqueSessionId'));
-
+    params.set('userID', userId);    
+    params.set('UserCategory','C');
+    
     return this.http.post(url_userlist, params)
       .map(response => response.json()['Detail']).map(data => {
         if (data != '')

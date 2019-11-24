@@ -1,7 +1,7 @@
 <app-header></app-header><br/>
 <app-menu></app-menu><br/>
-  <h3 style="text-align: center;">Client Dashboard</h3><br/>
-  <table #dataTable class="display" id="clientList" style="width:100%" *ngIf="clientList!=[]">
+  <h3 style="text-align: center;">Client Dashboard View</h3><br/>
+  <table #dataTable class="display" id="clientList" style="width:100%">
     <thead>
         <tr>
             <th>Client ID</th>
@@ -17,16 +17,25 @@
     </thead>
     <tbody>
         <tr  *ngFor="let item of clientList">
-            <td>{{item.clientid}}</td>
+            <td class="dropdown">
+                <a id="newTable" (click)="actionMethod($event)">{{item.clientid}}</a> 
+                <ul class="dropdown-menu">
+                    <li> <a [routerLink]="['/client',item.clientid]">Modify Profile</a></li>
+                    <li> <a [routerLink]="['/clientprofile',item.clientid]">View Profile</a></li>
+                    <li> <a [routerLink]="['/client-user',item.clientid]">Add User</a></li>
+                    <li> <a [routerLink]="['/cuser-dashboard',item.clientid]">User Dashboard</a></li>
+                </ul>
+            </td>
             <td>{{item.ClientShortName}}</td>
             <td>{{item.City}}</td>
             <td>{{item.ClientMobileNo}}</td>
             <td>{{item.ClientEMAILID}}</td>
             <td>{{item.MainContact}}</td>
-            <td>{{item.Usercategory}}</td>
+            <td>{{item.ClientCategory}}</td>
             <td>{{item.ClientStatusDate| date: 'dd-MMM-yyyy'}}</td>
             <td>{{item.ClientStatus}}</td>
         </tr>        
 </table>
-<br/><br/>
+<div *ngIf="clientList == []"><a [routerLink]="['/client',0]"><img class="loading-img" width="30px" height="30px" src="assets/img/add.png" alt="loader"></a></div>
+
 <app-footer></app-footer>

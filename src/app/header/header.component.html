@@ -1,4 +1,4 @@
-<img style="margin-left:53px;" class="background" src="assets/img/logoo.png" alt="logo" width="15%" height="15%">
+<!--<img style="margin-left:53px;" class="background" src="assets/img/logoo.png" alt="logo" width="15%" height="15%">
 <div id="wrapper">
   <ul>
     <li>
@@ -15,4 +15,30 @@
         <li id="login_width"><a [routerLink]="['/login']"><span>Login</span></a></li>
     </ng-template>              
   </ul>
-</div>
+</div>-->
+<div class="hero">
+  <span *ngIf="Session; else notSession"><img class="background" src="assets/img/blacklogo.png" width="190px" height="65px" alt="logo"></span>
+  <ng-template #notSession>
+    <img class="background" src="assets/img/logoo.png" alt="logo" >
+  </ng-template>
+  
+  <div class="nav-bar" > 
+    <div class="nav-links">
+      <ul >
+        <li>
+          <a [ngClass]="{whiteClass: !Session, blackClass: Session}" [routerLink]="['/']"><span>Home</span></a>
+      </li>
+      <li>
+          <a [ngClass]="{whiteClass: !Session, blackClass: Session}" href="#"><span>About us</span></a>
+      </li>    
+      <li>
+          <a [ngClass]="{whiteClass: !Session, blackClass: Session}" href="#"><span>Contact</span></a>
+      </li>   
+      <li  *ngIf="isLoggedIn(); else showLogin;"><a [ngClass]="{whiteClass: !Session, blackClass: Session}" [routerLink]="['/logout']"><span>Logout</span></a></li>
+      <ng-template #showLogin>
+          <li><a [ngClass]="{whiteClass: !Session, blackClass: Session}" [routerLink]="['/login']"><span>Login</span></a></li>
+      </ng-template>   
+      </ul>
+    </div>
+   </div> 
+  </div>  

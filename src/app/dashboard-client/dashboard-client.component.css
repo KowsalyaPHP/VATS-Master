@@ -1,0 +1,36 @@
+
+ ul{
+    padding: 0;
+    list-style: none;
+    background: #434a54;
+    margin: -5px 8px;
+}
+ul li{
+    display: inline-block;
+    position: relative;
+    line-height: 20px;
+    text-align: left;
+    width: 100%;
+}
+ul li a{
+    display: block;
+    padding: 6px 25px;
+    color: #fff;
+    text-decoration: none;
+    font-size:13px;
+}
+ul li a:hover{
+    color: #fff;
+    background: #070707;
+}
+ul li ul.dropdown-menu{
+    min-width: 100%; /* Set width of the dropdown */
+    background: #434a54;
+    display: none;
+    position: absolute;
+    z-index: 999;
+    left: 0;
+}
+ul li ul.dropdown-menu li{
+    display: block;
+}

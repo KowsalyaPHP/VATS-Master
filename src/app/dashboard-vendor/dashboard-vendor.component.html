@@ -1,7 +1,7 @@
 <app-header></app-header><br/>
 <app-menu></app-menu><br/>
-<h3 style="text-align: center;">Vendor Dashboard</h3><br/>
-  <table #dataTable class="display" id="vendorList" style="width:100%" *ngIf="vendorList!=[]">
+<h3 style="text-align: center;">Vendor Dashboard View</h3><br/>
+  <table #dataTable class="display" id="vendorList" style="width:100%">
     <thead>
         <tr>
             <th>Vendor ID</th>
@@ -16,16 +16,29 @@
         </tr>       
     </thead>
     <tbody>
-        <tr  *ngFor="let item of vendorList">
-            <td>{{item.Vendorid}}</td>
+        <tr *ngFor="let item of vendorList">
+            <td class="dropdown">
+                <a id="newTable" (click)="myClickFunction($event)">{{item.Vendorid}}</a> 
+                <ul class="dropdown-menu">
+                    <li> <a [routerLink]="['/vendor',item.Vendorid]">Modify Profile</a></li>
+                    <li> <a [routerLink]="['/vendorprofile',item.Vendorid]">View Profile</a></li>
+                    <li> <a [routerLink]="['/vendor-user',item.Vendorid]">Add User</a></li>
+                    <li> <a [routerLink]="['/vuser-dashboard',item.Vendorid]">User Dashboard</a></li>
+                </ul>
+            </td>
             <td>{{item.VendorShortName}}</td>
             <td>{{item.City}}</td>
             <td>{{item.VendorMobileNo}}</td>
             <td>{{item.VendorEMAILID}}</td>
             <td>{{item.MainContact}}</td>
-            <td>{{item.Usercategory}}</td>
+            <td>{{item.ClientCategory}}</td>
             <td>{{item.VendorStatusDate| date: 'dd-MMM-yyyy'}}</td>
             <td>{{item.VendorStatus}}</td>
         </tr>        
-</table><br/><br/>
+</table>
+<div *ngIf="vendorList == []"><a [routerLink]="['/vendor',0]"><img class="loading-img" width="30px" height="30px" src="assets/img/add.png" alt="loader"></a></div>
+
 <app-footer></app-footer>
+
+
+

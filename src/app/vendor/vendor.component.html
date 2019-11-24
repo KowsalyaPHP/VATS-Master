@@ -1,127 +1,98 @@
-<header id="login">
+<header id="login" *ngIf="!LoginVendor">
     <!-- Background Image -->
     <div class="bg-img">
         <img class="background" src="assets/img/laptop.jpg" alt="logo" width="100%" height="100%">
     </div>
 </header>
+<span *ngIf="LoginVendor">
+<app-header></app-header><br/>
+<app-menu></app-menu><br/></span>
 
 <div class="signup_form">
 <div class="form-group">
         <form class="form" role="form" autocomplete="off" id="SignupVendorForm" novalidate=""
-        [formGroup]="SignupVendorForm" appFocusvendor (submit)='signUpVendor(SignupVendorForm.getRawValue())'>
+        [formGroup]="SignupVendorForm" appFocusvendor (submit)='signUpVendor(SignupVendorForm.value)'>
        <h3 style="text-align: center;margin-bottom: 22px;">Vendor Form</h3>
       <table style="width:100%;">
            
-       <!-- <tr>
-            <td><label>Vendor ID<span class="mandatory">*</span></label></td>
-            <td><input type="text" formControlName="VendorID" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" /></td>
-        </tr>-->
-        <tr> 
-              
+        <tr *ngIf="LoginVendor">
+            <td><label>Vendor ID</label></td>
+            <td><input type="text" formControlName="VendorID" class="form-control"/></td>
+        </tr>
+        <tr>               
             <td><label>Name<span class="mandatory">*</span></label></td>
-            <td><input type="text" id="VendorName"  maxlength="80" formControlName="VendorName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.VendorName.errors }" required/>    
-            <!--<span class="text-muted" *ngIf="!SignupVendorForm.controls['VendorName'].valid && SignupVendorForm.controls['VendorName']?.touched && f.VendorName.errors"> Please enter valid name</span>-->
+            <td><input type="text" id="VendorName"  maxlength="80" formControlName="VendorName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.VendorName.errors }" required/>
             <div *ngIf="submitted && f.VendorName.errors" class="invalid-feedback">
                 <div *ngIf="f.VendorName.errors.required">Please enter Name.</div>
-            </div>
-        </td>          
+            </div></td>          
        </tr>
        <tr>
             <td><label>Short Name</label></td>
             <td class="tooltips"><input type="text" maxlength="8" formControlName="VendorShortName" class="form-control" /><span class="tooltipstext">Optional Info</span></td>
         </tr>
         <tr>
-            <td><label>Door No,Street<span class="mandatory">*</span></label></td>
-            <td class="tooltips"><input type="text" maxlength="80"  formControlName="RegdAddressL1" class="form-control " [ngClass]="{ 'is-invalid': submitted && f.RegdAddressL1.errors }" />
-            <span class="tooltipstext">Ex: 203,Concord Bldg</span>
-            <div *ngIf="submitted && f.RegdAddressL1.errors" class="invalid-feedback">
-                <div *ngIf="f.RegdAddressL1.errors.required">Please enter Address.</div>
-            </div>
-        </td>
-            
+            <td><label>Door No,Street</label></td>
+            <td class="tooltips"><input type="text" maxlength="80"  formControlName="RegdAddressL1" class="form-control"/>
+            <span class="tooltipstext">Ex: 203,Concord Bldg</span></td>            
         </tr>
         <tr>
-            <td><label>Area<span class="mandatory">*</span></label></td>
-            <td class="tooltips"><input type="text" maxlength="40" formControlName="Area" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.Area.errors }" /><span class="tooltipstext">Ex: Mulund</span>
-            <div *ngIf="submitted && f.Area.errors" class="invalid-feedback">
-                <div *ngIf="f.Area.errors.required">Please enter Area.</div>
-            </div>
-            </td>
-           
+            <td><label>Area</label></td>
+            <td class="tooltips"><input type="text" maxlength="40" formControlName="Area" class="form-control" /><span class="tooltipstext">Ex: Mulund</span></td>           
         </tr>
         <tr>
-            <td><label>City<span class="mandatory">*</span></label></td>
+            <td><label>City</label></td>
             <td class="tooltips">
-                <select placeholder="City" maxlength="40" [ngClass]="{ 'is-invalid': submitted && f.City.errors }" class="form-control" id="City" name="City" formControlName="City" >
-                    <option value='' selected>Select City</option>
-                    <option  value="2">Coimbatore</option>
-                    <option  value="2">Chennai</option>
-                    <option value="3">Mumbai</option>
+                <select placeholder="City"  maxlength="40" class="form-control" id="City" name="City" formControlName="City" >                 
+                    <option *ngFor="let item of cityLookups" value="{{item.Code}}" selected>{{item.Description}}</option> 
                 </select><span class="tooltipstext">Ex: Mumbai</span> 
-                <div *ngIf="submitted && f.City.errors" class="invalid-feedback">
-                    <div *ngIf="f.City.errors.required">Please enter City.</div>
-                </div></td>
-               
-                <!--<input type="text" formControlName="City" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" /> -->
+            </td>
         </tr>
         <tr>
-            <td><label>PIN CODE<span class="mandatory">*</span></label></td>
-            <td class="tooltips"><input type="text" maxlength="6" formControlName="PINCODE" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.PINCODE.errors }" /> <span class="tooltipstext">Enter PinCode and select Area
+            <td><label>PIN CODE</label></td>
+            <td class="tooltips"><input type="text" maxlength="6" formControlName="PINCODE" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.PINCODE.errors }" required/> <span class="tooltipstext">Enter PinCode and select Area
             </span>
-            <div *ngIf="submitted && f.PINCODE.errors" class="invalid-feedback">
-                <div *ngIf="f.PINCODE.errors.required">Please enter PINCODE.</div>
+           <div *ngIf="submitted && f.PINCODE.errors" class="invalid-feedback">
                 <div *ngIf="f.PINCODE.errors?.pattern">Please enter Valid PINCODE </div>
-            </div>
-        </td>
-            
+            </div></td>            
         </tr>
         <tr> 
             <td><label>Contact No.</label></td>
-            <td class="tooltips"><input type="text" maxlength="40" formControlName="VendorPhoneNo" class="form-control"/> <span class="tooltipstext">Office Phone Number</span>
-           <!-- <div *ngIf="submitted && f.VendorPhoneNo.errors" class="invalid-feedback">
-                <div *ngIf="f.VendorPhoneNo.errors.required">Please enter Contact No.</div>
-                <div *ngIf="f.VendorPhoneNo.errors?.pattern">Please enter Valid Contact No </div>
-            </div>-->
-            </td>    
-            
+            <td class="tooltips"><input type="text" maxlength="40" formControlName="VendorPhoneNo" class="form-control"/> <span class="tooltipstext">Office Phone Number</span>         
+            </td>                
         </tr>
         <tr>
             <td><label>Fax No.</label></td>
             <td class="tooltips"><input type="text" maxlength="40" formControlName="VendorFaxNo" class="form-control" /> <span class="tooltipstext">Office Fax Number</span></td> 
         </tr>
         <tr>
-            <td><label>Mobile No.<span class="mandatory">*</span></label></td>
-            <td class="tooltips"><input type="text" maxlength="10" formControlName="VendorMobileNo" class="form-control"  required [ngClass]="{ 'is-invalid': submitted && f.VendorMobileNo.errors }" /><span class="tooltipstext">Ex: 9999900000</span>
-                <div *ngIf="submitted && f.VendorMobileNo.errors" class="invalid-feedback">
-                    <div *ngIf="f.VendorMobileNo.errors.required">Please enter Mobile Number</div>
+            <td><label>Mobile No.</label></td>
+            <td class="tooltips"><input type="text" maxlength="10" formControlName="VendorMobileNo" class="form-control"  required [ngClass]="{ 'is-invalid': submitted && f.VendorMobileNo.errors }" required/><span class="tooltipstext">Ex: 9999900000</span>
+                <div *ngIf="submitted && f.VendorMobileNo.errors" class="invalid-feedback">                   
                     <div *ngIf="f.VendorMobileNo.errors?.pattern">Please enter Valid Mobile Number </div>
                 </div>
             </td>
             
         </tr>
         <tr>
-            <td><label>Email Id<span class="mandatory">*</span></label></td>
-            <td class="tooltips"><input type="text" maxlength="40" formControlName="VendorEMAILID" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.VendorEMAILID.errors }" /><span class="tooltipstext">Contact Email Id</span>
+            <td><label>Email Id</label></td>
+            <td class="tooltips"><input type="text" maxlength="40" formControlName="VendorEMAILID" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.VendorEMAILID.errors }" required/><span class="tooltipstext">Contact Email Id</span>
             <div *ngIf="submitted && f.VendorEMAILID.errors" class="invalid-feedback">
-                <div *ngIf="f.VendorEMAILID.errors.required">Please enter Email Id.</div>
                 <div *ngIf="f.VendorEMAILID.errors?.pattern">Please enter Valid Email Id.</div>
             </div>
             </td>
         </tr>
-       <!--<tr>
+       <tr *ngIf="LoginVendor">
             <td><label>GST Number</label></td>
-            <td class="tooltips"><input type="text" formControlName="VendorGSTNo" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" /><span class="tooltipstext">For Invoicing Purposes</span></td>
+            <td class="tooltips"><input type="text" formControlName="VendorGSTNo" class="form-control" /><span class="tooltipstext">For Invoicing Purposes</span></td>
         </tr>
-        <tr>
+        <tr *ngIf="LoginVendor">
             <td><label>Landmark</label></td>
-            <td class="tooltips"><input type="text" formControlName="VendorLandMark" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" /><span class="tooltipstext">To help in locating the place</span></td>
-        </tr> -->
+            <td class="tooltips"><input type="text" formControlName="VendorLandMark" class="form-control" /><span class="tooltipstext">To help in locating the place</span></td>
+        </tr>
         <tr>            
-            <td><label>Main Contact<span class="mandatory">*</span></label></td>
-            <td class="tooltips"><input type="text" maxlength="40" formControlName="MainContact" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.MainContact.errors }" /><span class="tooltipstext">Name of the main contact</span>
-            <div *ngIf="submitted && f.MainContact.errors" class="invalid-feedback">
-                <div *ngIf="f.MainContact.errors.required">Please enter Main Contact Name.</div>              
-            </div>
+            <td><label>Main Contact</label></td>
+            <td class="tooltips"><input type="text" maxlength="40" formControlName="MainContact" class="form-control" /><span class="tooltipstext">Name of the main contact</span>
+            
             </td>
         </tr>
         <tr>
@@ -137,11 +108,9 @@
             <td><input type="text" maxlength="40" formControlName="MainContactEmailId" class="form-control" /></td>
         </tr>
         <tr>
-            <td><label>Alternate Contact<span class="mandatory">*</span></label></td>
-            <td class="tooltips"><input type="text" maxlength="40" formControlName="AltContact" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.AltContact.errors }" /><span class="tooltipstext">Name of the alternate contact</span>
-            <div *ngIf="submitted && f.AltContact.errors" class="invalid-feedback">
-                <div *ngIf="f.AltContact.errors.required">Please enter Alternate Contact Name.</div>
-            </div>
+            <td><label>Alternate Contact</label></td>
+            <td class="tooltips"><input type="text" maxlength="40" formControlName="AltContact" class="form-control" /><span class="tooltipstext">Name of the alternate contact</span>
+            
             </td>
         </tr>
         <tr>
@@ -164,94 +133,83 @@
             <td><label>Since</label></td>
             <td><input type="text" formControlName="VendorStatusDate" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" /></td>
         </tr>-->
-       <!-- <tr>
-            <td><label>Category<span class="mandatory">*</span></label></td>
+       <tr *ngIf="LoginVendor">
+            <td><label>Category</label></td>
             <td class="tooltips">
-                <select disabled placeholder="VendorTier" class="form-control" id="VendorTier" name="VendorTier" formControlName="VendorTier" >
-                    <option value='' selected>Bronze</option>
-                    <option  value='2'>Gold</option>
-                    <option  value='3'>Platinum</option>
-                    <option  value='4'>Silver</option>
+                <select placeholder="VendorTier" class="form-control" id="VendorTier" name="VendorTier" formControlName="VendorTier" >
+                   <option *ngFor="let item of LookupCategory"  value="{{item.Code}}" selected>{{item.Description}}</option>
                 </select>
-                <input type="text" formControlName="VendorTier" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />--><!--<span class="tooltipstext">Gold, Platinum, Silver, Bronze etc</span></td>
+               <span class="tooltipstext">Gold, Platinum, Silver, Bronze etc</span></td>
         </tr>
-        <tr>
-            <td><label>Expertise<span class="mandatory">*</span></label></td>
-            <td class="tooltips"><input type="text" formControlName="VendorExpertise" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" /><span class="tooltipstext">4 char code seperated by semicolon</span></td>
+        <tr *ngIf="LoginVendor">
+            <td><label>Expertise</label></td>
+            <td class="tooltips"><select placeholder="VendorExpertise" class="form-control" id="VendorExpertise" name="VendorExpertise" formControlName="VendorExpertise" >        
+                <option *ngFor="let item of LookupExpertise"  value="{{item.Code}}" selected>{{item.Description}}</option>
+            </select><span class="tooltipstext">4 char code seperated by semicolon</span></td>
         </tr>
-        <tr>
-            <td><label>Type<span class="mandatory">*</span></label></td>
-            <td class="tooltips"><input type="text" formControlName="VendorType" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" /><span class="tooltipstext">Default can be VENDR</span>
+        <tr *ngIf="LoginVendor">
+            <td><label>Type</label></td>
+            <td class="tooltips"><select placeholder="VendorType" class="form-control" id="VendorType" name="VendorType" formControlName="VendorType" >
+                   <option *ngFor="let item of LookupType"  value="{{item.Code}}" selected>{{item.Description}}</option>
+                </select><span class="tooltipstext">Default can be VENDR</span>
             </td>
         </tr>
-        <tr>
+        <tr *ngIf="LoginVendor">
             <td><label>Team Size</label></td>
             <td><input type="text" maxlength="40" formControlName="TeamSize" class="form-control"/></td>
         </tr>
-        <tr>
+        <tr *ngIf="LoginVendor">
             <td><label>AccountCode</label></td>
-            <td class="tooltips"><input type="text" formControlName="VendorGLCode" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" /><span class="tooltipstext">Will be useful forposting fintxns
+            <td class="tooltips"><input type="text" formControlName="VendorGLCode" class="form-control" /><span class="tooltipstext">Will be useful forposting fintxns
             </span></td>
         </tr>
-        <tr>
-            <td><label>Max User Count<span class="mandatory">*</span></label></td>
-            <td><input type="text" [value]="SignupVendorForm.controls['AllowedUserCt'].value" maxlength="4" formControlName="AllowedUserCt" class="form-control"/>
-            <div *ngIf="submitted && f.AllowedUserCt.errors" class="invalid-feedback">
-                <div *ngIf="f.AllowedUserCt.errors.required">Please enter Max User Count.</div>
-            </div>
+        <tr *ngIf="LoginVendor">
+            <td><label>Max User Count</label></td>
+            <td><input type="text" [value]="SignupVendorForm.controls['AllowedUserCt'].value" maxlength="4" formControlName="AllowedUserCt" class="form-control"/>          
             </td>
         </tr>
-        <tr>
-            <td><label>Concurrent User Count<span class="mandatory">*</span></label></td>
-            <td><input type="text" maxlength="4" formControlName="ConcurrentUserCt" class="form-control"/>
-            <div *ngIf="submitted && f.ConcurrentUserCt.errors" class="invalid-feedback">
-                <div *ngIf="f.ConcurrentUserCt.errors.required">Please enter Concurrent User Count.</div>
-            </div>
+        <tr *ngIf="LoginVendor">
+            <td><label>Concurrent User Count</label></td>
+            <td><input type="text" maxlength="4" formControlName="ConcurrentUserCt" class="form-control"/>  
             </td>
             
         </tr>
-        <tr>
-            <td><label>Common Pool Access Allowed?<span class="mandatory">*</span></label></td>
+        <tr *ngIf="LoginVendor">
+            <td><label>Common Pool Access Allowed?</label></td>
             <td>
-            <select disabled placeholder="CommonPoolYorN" class="form-control" id="CommonPoolYorN" name="CommonPoolYorN" formControlName="CommonPoolYorN" >
-                    <option value='1'>Y</option>
-                    <option  value='' selected>N</option>
+            <select placeholder="CommonPoolYorN" class="form-control" id="CommonPoolYorN" name="CommonPoolYorN" formControlName="CommonPoolYorN" >
+                    <option value='Y'>Y</option>
+                    <option  value='N' selected>N</option>
+                </select>            
+            </td>             
+        </tr>
+        <tr *ngIf="LoginVendor">
+            <td><label>Own Pool Permit?</label></td>
+            <td><select placeholder="OwnPoolPermitYorN" class="form-control" id="OwnPoolPermitYorN" name="OwnPoolPermitYorN" formControlName="OwnPoolPermitYorN" >
+                    <option value='Y'>Y</option>
+                    <option  value='N' selected>N</option>
+                </select>            
+            </td>
+        </tr>
+        <tr *ngIf="LoginVendor">
+            <td><label>Admin Rights Y/N?</label></td>
+            <td><select placeholder="AdminRightsYorN" class="form-control" id="AdminRightsYorN" name="AdminRightsYorN" formControlName="AdminRightsYorN" >
+                    <option value='Y' selected>Y</option>
+                    <option  value="N">N</option>
                 </select>
-                <div *ngIf="submitted && f.CommonPoolYorN.errors" class="invalid-feedback">
-                    <div *ngIf="f.CommonPoolYorN.errors.required">Please enter Detail.</div>
-                </div>
-            </td>
-               <input type="text" formControlName="CommonPoolYorN" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" /></td>
-               
-        </tr>
-        <tr>
-            <td><label>Own Pool Permit?<span class="mandatory">*</span></label></td>
-            <td><select disabled placeholder="OwnPoolPermitYorN" class="form-control" id="OwnPoolPermitYorN" name="OwnPoolPermitYorN" formControlName="OwnPoolPermitYorN" >
-                    <option value='1'>Y</option>
-                    <option  value='' selected>N</option>
-                </select><input type="text" formControlName="OwnPoolPermitYorN" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />-->
-               <!--<div *ngIf="submitted && f.OwnPoolPermitYorN.errors" class="invalid-feedback">
-                    <div *ngIf="f.OwnPoolPermitYorN.errors.required">Please enter Detail.</div>
-                </div>
             </td>
         </tr>
-        <tr>
-            <td><label>Admin Rights Y/N?<span class="mandatory">*</span></label></td>
-            <td><select disabled placeholder="AdminRightsYorN" class="form-control" id="AdminRightsYorN" name="AdminRightsYorN" formControlName="AdminRightsYorN" >
-                    <option value='' selected>Y</option>
-                    <option  value="2">N</option>
-                </select><input type="text" formControlName="AdminRightsYorN" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />-->
-                <!--<div *ngIf="submitted && f.AdminRightsYorN.errors" class="invalid-feedback">
-                    <div *ngIf="f.AdminRightsYorN.errors.required">Please enter Detail.</div>
-                </div>
-            </td>
-        </tr>-->
     </table>
     <table style="width:100%;">
         <tr>
-            <td class="mandatory">* Mandatory Fields</td>
-            <td style="text-align:right;"><input type="submit" value="Save" style="width:34% !important;margin:8px !important;" class="button"/><a [routerLink]="['/login']" class="sign-up"><input type="submit" style="width:34% !important;margin:8px !important;" value="Cancel" class="button"/></a></td>
+            <td style="width:50%;" class="mandatory">* Mandatory Fields</td>
+            <td style="text-align:right;width:50%;"><input type="submit" value="Save" style="width:34% !important;margin:8px !important;" class="button"/>
+            <a *ngIf="!LoginVendor" [routerLink]="['/login']" class="sign-up"><input type="submit" style="width:34% !important;margin:8px !important;" value="Cancel" class="button"/></a>
+            <a *ngIf="LoginVendor" [routerLink]="['/dashboard-vendor']" class="sign-up"><input type="submit" style="width:34% !important;margin:8px !important;" value="Cancel" class="button"/></a>            
+            <p id="loader" style="margin: -4px 129px -26px 0px;display:none;"><img class="loading-img" src="assets/img/load.gif"    alt="loader"></td>
         </tr>
     </table>
     </form>
 </div></div>
+<span *ngIf="LoginVendor">
+<app-footer></app-footer></span>

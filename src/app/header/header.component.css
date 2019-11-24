@@ -1,55 +1,60 @@
 
-#wrapper {
-  width: 50%;
-  float:right;
-  margin-top: 16px;
+*{
+	margin:0;
+	padding:0;
 }
-ul {
-  box-sizing:border-box;
-  margin: 0 auto;
-  padding: 0;
-  background-color: #fff;
-  font-size:0px;    
+.hero
+{
+	background-position:center;
+	background-size:cover;
+	overflow:hidden;
+	position:relative;
 }
-li {
-  display: inline-block;
-  float: none;
-  width:25%;
-  transition:all .1s;
-  text-align: center;
-  box-sizing:border-box;
-  border-right: thin solid #f9eeee;
-  font-weight: 200;  
+.nav-bar
+{
+	display:flex;
+	padding: 20px 40px;
+	float:right;
+	font-weight:bold;
 }
-
-li:last-child {
-  border-right:none;  
+.hero img
+{
+	margin-left:42px;
+	margin-top:10px;
 }
-li:hover {
-  background:#3aaede;
-  width:24%;
-  box-shadow:inset 0 0 5px #147eac;  
+.nav-links
+{
+	flex:1;
 }
-a {
-  display: block;
-  box-sizing:border-box;
-  padding-top: 8px;
-  height: 40px;
-  text-decoration: none;
-  font-size: 18px;  
-  color: #3aaede;  
+.nav-links-ul
+{
+	margin-left:50px;
+	display:inline;
 }
-a:hover{
-  color: #ffffff;
+.nav-links ul li
+{
+	list-style:none;
+	display:inline-block;
+	padding:8px 25px;
 }
-
-#login_width:hover{
-  width:25%;
+.nav-links ul a
+{
+	text-decoration:none;
+	font-size:13px;
 }
-/*Media Querie*/
-@media only screen and (min-width : 250px) and (max-width : 530px){
-  #wrapper {
-    width:100%;
-  }
-
+.nav-links ul li::after
+{
+	content:'';
+	width:0;
+	height:2px;
+	background:#3aaede;
+	display:block;
+	margin:auto;
+	transition:.3s;
 }
+.nav-links ul li:hover::after
+{
+	width:100%;
+}
+.whiteClass { color: #fff }
+.blackClass { color: rgb(10, 10, 10) }

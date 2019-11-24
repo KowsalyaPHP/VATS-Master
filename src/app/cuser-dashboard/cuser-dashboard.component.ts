@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router,ActivatedRoute } from '@angular/router';
 import { CuserDashboardService } from './cuser-dashboard.service';
 declare var $: any
 
@@ -11,13 +11,13 @@ declare var $: any
 export class CuserDashboardComponent implements OnInit {
 
   clientUserList:[];
- 
-  constructor(private routerObj: Router,private CuserDashboardServices: CuserDashboardService) {
+  userId:any;
+  constructor(private routerObj: Router,private CuserDashboardServices: CuserDashboardService,private route: ActivatedRoute) {
    
     var userName = sessionStorage.getItem("userName");
     var USERCATEGORY = sessionStorage.getItem("USERCATEGORY"); 
     
-    if (!userName && USERCATEGORY != "V"){
+    if (!userName){
       this.routerObj.navigate(['/login']);
     }    
    
@@ -25,6 +25,16 @@ export class CuserDashboardComponent implements OnInit {
    }
 
   ngOnInit() {
+    $('a.newTable').on('click', function(event) {
+      alert('s');
+      event.stopPropagation();
+      $(this).parent().hide(500, function() {
+        $(this).parent().remove();
+      });
+    });
+    $(document).on('click', '.newTable', function (e) {
+      console.log('second box2 handler');
+  });
   } 
 
   ngAfterViewInit() {
@@ -35,8 +45,25 @@ export class CuserDashboardComponent implements OnInit {
     }, 1000);    
   }
 
+  actionMethod(event) {    
+    $(".dropdown-menu").slideDown("fast");     
+    event.stopImmediatePropagation();
+    event.preventDefault();
+    $(document).on("click", function(event){      
+      var $trigger = $(".dropdown");
+      if($trigger !== event.target && !$trigger.has(event.target).length){
+          $(".dropdown-menu").slideUp("fast");
+      }            
+   });
+  }
+  
   getClientUserLists() {   
-    this.CuserDashboardServices.getClientUserList().subscribe(
+
+    this.route.params.subscribe(params => {
+      this.userId = params['id'];      
+    });
+
+    this.CuserDashboardServices.getClientUserList(this.userId).subscribe(
       response => {
         if (response != "No data") {
           if (response == "Login Failed") {           

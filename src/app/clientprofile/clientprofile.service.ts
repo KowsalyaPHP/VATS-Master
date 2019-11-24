@@ -11,13 +11,13 @@ export class ClientprofileService {
 
   constructor(private http: Http) { }
 
-  public getClientProfileDetails(): Observable<any> {
+  public getClientProfileDetails(userId:any,usercategory:any): Observable<any> {
 
     const url_get = AppComponent.urlPath + 'EmgCVProfile';
     const params = new URLSearchParams();   
-    var userId = sessionStorage.getItem("uniqueSessionId"); 
+   
     params.set('userID', userId);
-    params.set('usercategory', 'C1');
+    params.set('usercategory', usercategory);
    
     return this.http.post(url_get, params)
       .map(response => response.json()['Detail']).map(data => {

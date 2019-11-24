@@ -17,6 +17,11 @@ import { VendorUserComponent } from './vendor-user/vendor-user.component';
 import { ClientUserComponent } from './client-user/client-user.component';
 import { VuserDashboardComponent } from './vuser-dashboard/vuser-dashboard.component';
 import { CuserDashboardComponent } from './cuser-dashboard/cuser-dashboard.component';
+import { DashboardRequisitionComponent } from './dashboard-requisition/dashboard-requisition.component';
+import { VuserprofileComponent } from './vuserprofile/vuserprofile.component';
+import { CuserprofileComponent } from './cuserprofile/cuserprofile.component';
+import { ClienteditUserComponent } from './clientedit-user/clientedit-user.component';
+import { VendoreditUserComponent } from './vendoredit-user/vendoredit-user.component';
 
 const routes: Routes = [
 {
@@ -36,7 +41,7 @@ const routes: Routes = [
   component: ClientComponent
 },
 {
-  path: "vendor",
+  path: "vendor/:id",
   component: VendorComponent
 },
 {
@@ -48,28 +53,48 @@ const routes: Routes = [
   component: DashboardClientComponent
 },
 {
-  path: "vendorprofile",
+  path: "dashboard-requisition",
+  component: DashboardRequisitionComponent
+},
+{
+  path: "vendorprofile/:id",
   component: VendorprofileComponent
 },
 {
-  path: "clientprofile",
+  path: "clientprofile/:id",
   component: ClientprofileComponent
 },
 {
-  path: "vendor-user",
+  path: "cuserprofile/:id",
+  component: CuserprofileComponent
+},
+{
+  path: "vuserprofile/:id",
+  component: VuserprofileComponent
+},
+{
+  path: "vendor-user/:id",
   component: VendorUserComponent
 },
 {
-  path: "client-user",
+  path: "client-user/:id",
   component: ClientUserComponent
 },
 {
-  path: "vuser-dashboard",
+  path: "vuser-dashboard/:id",
   component: VuserDashboardComponent
 },
 {
-  path: "cuser-dashboard",
+  path: "cuser-dashboard/:id",
   component: CuserDashboardComponent
+},
+{
+  path: "clientedit-user/:id",
+  component: ClienteditUserComponent
+},
+{
+  path: "vendoredit-user/:id",
+  component: VendoreditUserComponent
 },
 {
   path: "emagine",

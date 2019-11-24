@@ -33,7 +33,16 @@ export class DashboardClientComponent implements OnInit {
       });      
     }, 1000);    
   }
-
+  actionMethod(event) {    
+    $(".dropdown-menu").show();
+    event.stopPropagation();
+    $(document).on("click", function(event){
+      var $trigger = $(".dropdown");
+      if($trigger !== event.target && !$trigger.has(event.target).length){
+          $(".dropdown-menu").slideUp("fast");
+      }            
+   });
+  }
   getClientDetails() {   
     this.DashboardClientServices.getClientList().subscribe(
       response => {

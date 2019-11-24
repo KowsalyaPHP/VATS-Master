@@ -11,17 +11,40 @@ export class ClientUserService {
 
   constructor(private http: Http) { }
 
-  public addClientUsers(FormObj): Observable<any> {
+  public addClientUsers(FormObj,UserId:any): Observable<any> {
 
     const url_user = AppComponent.urlPath + 'Addusers';
     const params = new URLSearchParams();
 
-    params.set('UserCategory',sessionStorage.getItem('USERCATEGORY'));
-    params.set('RefId',sessionStorage.getItem('uniqueSessionId'));
+    params.set('UserCategory','C');
+    params.set('RefId',UserId);
     params.set('UserMrMs', FormObj.UserMrMs);
     params.set('UserName', FormObj.UserName);
     params.set('UserRemarks', FormObj.UserRemarks);
     params.set('UserEmail', FormObj.UserEmail);
+    params.set('UserContactNo', FormObj.UserContactNo);
+
+    return this.http.post(url_user, params)
+      .map(response => response.json()).map(data => {
+        if (data != '')
+          return data;
+        else
+          return '';
+      });
+  }
+  public updateClientUsers(FormObj,UserId:any): Observable<any> {
+
+    const url_user = AppComponent.urlPath + 'EmgCUserProfileEdit';
+    const params = new URLSearchParams();
+    console.log(FormObj);
+
+    params.set('USERID', UserId);
+    params.set('UserMrMs', FormObj.UserMrMs);
+    params.set('UserName', FormObj.UserName);
+    params.set('Remarks', FormObj.UserRemarks);
+    params.set('UserEmail', FormObj.UserEmail);
+    params.set('Level', FormObj.UserRoles);
+    params.set('Status', FormObj.UserStatus);
     params.set('UserContactNo', FormObj.UserContactNo);
 
     return this.http.post(url_user, params)

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router,ActivatedRoute } from '@angular/router';
 import { VendorprofileService } from './vendorprofile.service';
+import { Location } from '@angular/common';
 declare var $: any
 
 @Component({
@@ -11,8 +12,10 @@ declare var $: any
 export class VendorprofileComponent implements OnInit {
 
   vendorprofile : [];
-  
-  constructor(private routerObj: Router,private VendorprofileServices: VendorprofileService) {    
+  userId:any;
+  usercategory:any;
+
+  constructor(private _location: Location,private routerObj: Router,private VendorprofileServices: VendorprofileService,private route: ActivatedRoute) {    
     
      var userName = sessionStorage.getItem("userName");
   
@@ -28,7 +31,14 @@ export class VendorprofileComponent implements OnInit {
   }
 
   getVendorProfile() {   
-    this.VendorprofileServices.getVendorProfileDetails().subscribe(
+
+    this.route.params.subscribe(params => {
+      this.userId = params['id'];
+    });
+    
+    this.usercategory = "V";
+
+    this.VendorprofileServices.getVendorProfileDetails(this.userId,this.usercategory).subscribe(
       response => {
         if (response != "No data") {
           if (response == "Login Failed") {           
@@ -45,5 +55,7 @@ export class VendorprofileComponent implements OnInit {
       error => console.log(error)
     );
   }
-
+  backClicked() {
+    this._location.back();
+  }
 }

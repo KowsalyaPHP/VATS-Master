@@ -62,7 +62,7 @@ export class LoginComponent implements OnInit {
         if (response != "No data") {
           if (response == "Login Failed") {
             $("#loader").css("display", "none");            
-            alert ("Login details does not exist.");
+            alert ("Invalid Login.");
             this.resetErrorForm();
           }
           else if(response == "Maximum User Logged"){
@@ -84,11 +84,11 @@ export class LoginComponent implements OnInit {
             var firstLetter = str.charAt(0);
             
             if (firstLetter == "C") {
-              this.routerObj.navigate(["/clientprofile"]);
+              this.routerObj.navigate(["/dashboard-requisition"]);
             }else if (firstLetter == "V") {
-              this.routerObj.navigate(["/vendorprofile"]);
+              this.routerObj.navigate(["/dashboard-requisition"]);
             }else {
-              this.routerObj.navigate(["/emagine"]);
+              this.routerObj.navigate(["/dashboard-requisition"]);
             }
           }
         } else {

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router,ActivatedRoute } from '@angular/router';
 import { ClientprofileService } from './clientprofile.service';
+import { Location } from '@angular/common';
 declare var $: any
 
 @Component({
@@ -11,24 +12,33 @@ declare var $: any
 export class ClientprofileComponent implements OnInit {
 
   clientprofile : [];
-  
-  constructor(private routerObj: Router,private ClientprofileServices: ClientprofileService) {    
+  userId:any;
+  usercategory:any;
+
+  constructor(private _location: Location,private routerObj: Router,private ClientprofileServices: ClientprofileService,private route: ActivatedRoute) {    
       var userName = sessionStorage.getItem("userName");
       var userId = sessionStorage.getItem("uniqueSessionId"); 
       var firstLetter = userId.charAt(0); 
       if (!userName){
         this.routerObj.navigate(['/login']);
       }    
-
       this.getClientProfile();
   }
 
 
   ngOnInit() {
   }
+  backClicked() {
+    this._location.back();
+  }
 
   getClientProfile() {   
-    this.ClientprofileServices.getClientProfileDetails().subscribe(
+    this.route.params.subscribe(params => {
+      this.userId = params['id'];
+    });
+    this.usercategory = "C1";
+
+    this.ClientprofileServices.getClientProfileDetails(this.userId,this.usercategory).subscribe(
       response => {
         if (response != "No data") {
           if (response == "Login Failed") {           

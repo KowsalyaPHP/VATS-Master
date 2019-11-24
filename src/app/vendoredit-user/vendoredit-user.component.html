@@ -1,0 +1,86 @@
+<app-header></app-header><br/>
+<app-menu></app-menu><br/>
+<div class="form-group">
+<form class="form" role="form" autocomplete="off" id="updateVendorUser" novalidate=""
+[formGroup]="updateVendorUser" appFocusvendor (submit)='updateVendorUserList(updateVendorUser.getRawValue())'>
+<h3 style="text-align: center;margin-bottom: 22px;">Vendor User Form</h3>
+<table style="width:40%;margin:auto;">
+<tr *ngIf="vLoginProfile">
+          <td><label>User Type</label></td>
+          <td><input type="text" id="UserCategory"  maxlength="80" formControlName="UserCategory" class="form-control"/></td>          
+     </tr>
+     <tr *ngIf="vLoginProfile">
+          <td><label>Ref Key</label></td>
+          <td><input type="text" id="VENDORID"  maxlength="80" formControlName="VENDORID" class="form-control"/></td>          
+     </tr>
+     <tr *ngIf="vLoginProfile">
+          <td><label>User Id</label></td>
+          <td><input type="text" id="UserId"  maxlength="80" formControlName="UserId" class="form-control"/></td>          
+     </tr>
+     <tr *ngIf="vLoginProfile">
+          <td><label>User Levels</label></td>
+          <td><input type="text" id="UserRoles"  maxlength="80" formControlName="UserRoles" class="form-control"/></td>          
+     </tr>  
+     <tr>
+          <td><label>Mr/Ms</label></td>
+          <td><input type="text" id="UserMrMs"  maxlength="80" formControlName="UserMrMs" class="form-control"/></td>          
+     </tr>
+     <tr>
+          <td><label>Name</label></td>
+          <td><input type="text" [ngClass]="{ 'is-invalid': submitted && f.UserName.errors }" id="UserName"  maxlength="80" formControlName="UserName" class="form-control" required/>
+          <div *ngIf="submitted && f.UserName.errors" class="invalid-feedback">
+               <div *ngIf="f.UserName.errors.required">Please enter Name.</div>
+          </div>
+          </td>            
+     </tr>    
+     <tr *ngIf="vLoginProfile">
+          <td><label>Status</label></td>
+          <td>
+               <select style="height: auto;" placeholder="UserStatus" maxlength="40" class="form-control" id="UserStatus" name="UserStatus" formControlName="UserStatus">
+                    <option *ngFor="let item of VLookupStatus" value="{{item.Code}}" selected>{{item.Description}}</option>
+               </select>   
+          </td>             
+     </tr>
+     <tr>
+          <td><label>Remarks</label></td>
+          <td><input type="text" id="UserRemarks"  maxlength="80" formControlName="UserRemarks" class="form-control"/></td>          
+     </tr>   
+     <tr>
+          <td><label>Email Id</label></td>
+          <td><input type="text" [ngClass]="{ 'is-invalid': submitted && f.UserEmail.errors }" id="UserEmail"  maxlength="80" formControlName="UserEmail" class="form-control" required/>
+          <div *ngIf="submitted && f.UserEmail.errors" class="invalid-feedback">
+               <div *ngIf="f.UserEmail.errors.required">Please enter Email id.</div>
+               <div *ngIf="f.UserEmail.errors.pattern">Please enter Valid Email id.</div>
+          </div>
+          </td>          
+     </tr>
+     <tr>
+          <td><label>Mobile Number</label></td>
+          <td><input type="text" maxlength="10" [ngClass]="{ 'is-invalid': submitted && f.UserContactNo.errors }" id="UserContactNo"  formControlName="UserContactNo" class="form-control" required/>
+          <div *ngIf="submitted && f.UserContactNo.errors" class="invalid-feedback">
+               <div *ngIf="f.UserContactNo.errors.required">Please enter Mobile number.</div>
+               <div *ngIf="f.UserContactNo.errors.pattern || f.UserContactNo.errors?.minlength">Please enter Valid Mobile number.</div>
+          </div>
+          </td>    
+     </tr>
+     <tr>             
+     <td></td>
+     <td>
+          <input type="submit" value="Save" style="margin:8px !important;" class="button"/><p id="loader" style="margin: -4px 129px -26px 0px;display:none;"><img class="loading-img" src="assets/img/load.gif" alt="loader"></p>
+          <a style="cursor: pointer;text-align: right;margin-left: 190px;" (click)="backClicked();"><img class="back-img" src="assets/img/backarrow.png" width="30px" height="20px"  alt="Back"></a></td>
+     </tr>
+</table>
+</form></div>
+
+<app-footer></app-footer>
+
+
+
+
+
+
+
+
+
+
+

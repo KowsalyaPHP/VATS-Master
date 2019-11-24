@@ -1,8 +1,12 @@
 #footerboard{
     width:100%;
-    height:50px;
-    background-color: #3aaede;
+    height:40px;
+    background-color: #3499c3;
     color:#ffffff;
-    padding: 17px;
+    padding: 10px;
     text-align: center;   
+    bottom: 0;
+    right: 0; 
+    z-index: 1000;
+    position: fixed;
 }

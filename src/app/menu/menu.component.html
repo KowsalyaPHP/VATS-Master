@@ -1,15 +1,18 @@
 
 <nav>
   <ul>
-        <li *ngFor="let Mainmenu of menuList"><a [routerLink]="Mainmenu.MainMenuLink">{{ Mainmenu.MainMenuTitle }}</a>   
+        <li class="menutooltips" *ngFor="let Mainmenu of menuList"><div class="top">{{Mainmenu.Menuid}}-{{Mainmenu.MainMenuTitle}}<i></i></div><a  [routerLink]="Mainmenu.MainMenuLink">{{ Mainmenu.MainMenuTitle }}</a> 
             <ul *ngIf="Mainmenu.SubMenuTitle.length != 0">
                 <li><a [routerLink]="Mainmenu.SubMenuLink">{{Mainmenu.SubMenuTitle}}</a></li>                 
             </ul>        
         </li>
         <li style="float:right;color:#ffffff;padding: 12px 10px;font-size: 15px;border:none;width:auto;">Welcome - {{username}}</li>
-       
+      
 </ul>  
-</nav><!--<nav>
+</nav>
+
+    
+<!--<nav>
     <ul>
         <li *ngFor="let Mainmenu of menuList['Menudetails']"><a href='#'> {{ Mainmenu.MainMenuTitle }}</a>   
         <ul *ngIf="Mainmenu.SubMenuTitle.length != 0 ">

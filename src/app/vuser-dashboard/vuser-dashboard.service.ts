@@ -11,13 +11,13 @@ export class VuserDashboardService {
 
   constructor(private http: Http) { }
   
-  public getvendorUserList(): Observable<any> {
+  public getvendorUserList(userId:any): Observable<any> {
 
     const url_vendorUserList = AppComponent.urlPath + 'userdashboard';
     const params = new URLSearchParams();  
 
-    params.set('UserCategory',sessionStorage.getItem('USERCATEGORY'));
-    params.set('userid',sessionStorage.getItem('uniqueSessionId'));
+    params.set('userID', userId);    
+    params.set('UserCategory','V');
 
     return this.http.post(url_vendorUserList, params)
       .map(response => response.json()['Detail']).map(data => {
