@@ -82,14 +82,14 @@ export class LoginComponent implements OnInit {
        
             var str = response["Userdetail"][0]["USERID"]; 
             var firstLetter = str.charAt(0);
-            
-            if (firstLetter == "C") {
-              this.routerObj.navigate(["/dashboard-requisition"]);
+            this.routerObj.navigate(["/dashboard-requisition/0"]);
+          /*  if (firstLetter == "C") {
+              this.routerObj.navigate(["/dashboard-requisition/0"]);
             }else if (firstLetter == "V") {
-              this.routerObj.navigate(["/dashboard-requisition"]);
+              this.routerObj.navigate(["/dashboard-requisition/0"]);
             }else {
-              this.routerObj.navigate(["/dashboard-requisition"]);
-            }
+              this.routerObj.navigate(["/dashboard-requisition/0"]);
+            }*/
           }
         } else {
             console.log("something is wrong with Service Execution");

@@ -16,7 +16,7 @@ export class VendorService {
 
     const url_vendor = AppComponent.urlPath + 'vendorm';
     const params = new URLSearchParams();
-
+    
     params.set('VendorName', FormObj.VendorName);
     params.set('RegdAddressL1', FormObj.RegdAddressL1);
     params.set('Area', FormObj.Area);
@@ -87,7 +87,7 @@ export class VendorService {
     params.set('CommonPoolYorN', FormObj.CommonPoolYorN);
     params.set('OwnPoolPermitYorN', FormObj.OwnPoolPermitYorN);
     params.set('AdminRightsYorN', FormObj.AdminRightsYorN);
-    console.log(params);
+    
     return this.http.post(url_Vendor, params)
       .map(response => response.json()).map(data => {
         if (data != '')

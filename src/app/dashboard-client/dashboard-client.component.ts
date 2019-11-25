@@ -17,7 +17,7 @@ export class DashboardClientComponent implements OnInit {
     var userName = sessionStorage.getItem("userName");
     var userId = sessionStorage.getItem("uniqueSessionId"); 
     var firstLetter = userId.charAt(0); 
-    if (!userName || firstLetter != 'E'){
+    if (!userName){
       this.routerObj.navigate(['/login']);
     }    
     this.getClientDetails();

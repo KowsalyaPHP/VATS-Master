@@ -8,6 +8,7 @@ import {
 } from "@angular/forms";
 import { ClientUserService } from './client-user.service';
 import { CommonService } from '../shared/services/common.service';
+import { Location } from '@angular/common';
 declare var $: any
 
 @Component({
@@ -21,7 +22,7 @@ export class ClientUserComponent implements OnInit {
   userId:any;
   submitted = false;
   
-  constructor(private ClientUserServices: ClientUserService,private formBuilderObj: FormBuilder,private routerObj: Router,private route: ActivatedRoute) {
+  constructor(private _location: Location,private ClientUserServices: ClientUserService,private formBuilderObj: FormBuilder,private routerObj: Router,private route: ActivatedRoute) {
     this.AddClientUser = this.formBuilderObj.group({     
       UserMrMs: '',      
       UserName: ['', [Validators.required]],
@@ -44,6 +45,10 @@ export class ClientUserComponent implements OnInit {
   ngOnInit() {
   }
   get f() { return this.AddClientUser.controls; }
+
+  backClicked() {
+    this._location.back();
+  }
 
   addClientUser(formObj) {
 

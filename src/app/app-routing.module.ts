@@ -53,7 +53,7 @@ const routes: Routes = [
   component: DashboardClientComponent
 },
 {
-  path: "dashboard-requisition",
+  path: "dashboard-requisition/:id",
   component: DashboardRequisitionComponent
 },
 {

@@ -236,7 +236,7 @@ export class VendorComponent implements OnInit {
         this.VendorServices.UpdateVendors(formObj,this.id).subscribe(
           response => {
             if (response != '') {         
-            alert("Welcome to VATS as New Vendor.\nPlease check your email for further details.");
+            alert("Details successfully updated");
             this.routerObj.navigate(["/dashboard-vendor"]);
             }
             else {         

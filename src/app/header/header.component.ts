@@ -10,11 +10,17 @@ export class HeaderComponent implements OnInit {
   constructor() { 
 
    }
-
+   ngAfterViewInit() {
+    setTimeout(() => {
+      var sessionId = sessionStorage.getItem("uniqueSessionId");
+      if(sessionId){      
+        this.Session=true;
+      }     
+    }, 1);
+  }
    isLoggedIn(){
     var sessionId = sessionStorage.getItem("uniqueSessionId");
-    if(sessionId){
-      this.Session=true;
+    if(sessionId){      
       return true;
     }
     else{

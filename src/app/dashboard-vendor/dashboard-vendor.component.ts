@@ -16,7 +16,7 @@ export class DashboardVendorComponent implements OnInit {
     var userId = sessionStorage.getItem("uniqueSessionId"); 
     var firstLetter = userId.charAt(0); 
 
-    if (!userName || firstLetter != 'E'){
+    if (!userName){
       this.routerObj.navigate(['/login']);
     }      
            

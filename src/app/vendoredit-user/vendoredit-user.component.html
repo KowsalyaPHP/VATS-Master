@@ -3,7 +3,7 @@
 <div class="form-group">
 <form class="form" role="form" autocomplete="off" id="updateVendorUser" novalidate=""
 [formGroup]="updateVendorUser" appFocusvendor (submit)='updateVendorUserList(updateVendorUser.getRawValue())'>
-<h3 style="text-align: center;margin-bottom: 22px;">Vendor User Form</h3>
+<h3 style="text-align: center;margin-bottom: 22px;">User Profile</h3>
 <table style="width:40%;margin:auto;">
 <tr *ngIf="vLoginProfile">
           <td><label>User Type</label></td>
@@ -26,7 +26,7 @@
           <td><input type="text" id="UserMrMs"  maxlength="80" formControlName="UserMrMs" class="form-control"/></td>          
      </tr>
      <tr>
-          <td><label>Name</label></td>
+          <td><label>Name</label><span class="mandatory">*</span></td>
           <td><input type="text" [ngClass]="{ 'is-invalid': submitted && f.UserName.errors }" id="UserName"  maxlength="80" formControlName="UserName" class="form-control" required/>
           <div *ngIf="submitted && f.UserName.errors" class="invalid-feedback">
                <div *ngIf="f.UserName.errors.required">Please enter Name.</div>
@@ -46,7 +46,7 @@
           <td><input type="text" id="UserRemarks"  maxlength="80" formControlName="UserRemarks" class="form-control"/></td>          
      </tr>   
      <tr>
-          <td><label>Email Id</label></td>
+          <td><label>Email Id</label><span class="mandatory">*</span></td>
           <td><input type="text" [ngClass]="{ 'is-invalid': submitted && f.UserEmail.errors }" id="UserEmail"  maxlength="80" formControlName="UserEmail" class="form-control" required/>
           <div *ngIf="submitted && f.UserEmail.errors" class="invalid-feedback">
                <div *ngIf="f.UserEmail.errors.required">Please enter Email id.</div>
@@ -55,7 +55,7 @@
           </td>          
      </tr>
      <tr>
-          <td><label>Mobile Number</label></td>
+          <td><label>Mobile Number</label><span class="mandatory">*</span></td>
           <td><input type="text" maxlength="10" [ngClass]="{ 'is-invalid': submitted && f.UserContactNo.errors }" id="UserContactNo"  formControlName="UserContactNo" class="form-control" required/>
           <div *ngIf="submitted && f.UserContactNo.errors" class="invalid-feedback">
                <div *ngIf="f.UserContactNo.errors.required">Please enter Mobile number.</div>
@@ -66,8 +66,9 @@
      <tr>             
      <td></td>
      <td>
-          <input type="submit" value="Save" style="margin:8px !important;" class="button"/><p id="loader" style="margin: -4px 129px -26px 0px;display:none;"><img class="loading-img" src="assets/img/load.gif" alt="loader"></p>
-          <a style="cursor: pointer;text-align: right;margin-left: 190px;" (click)="backClicked();"><img class="back-img" src="assets/img/backarrow.png" width="30px" height="20px"  alt="Back"></a></td>
+          <input type="submit" value="Save" style="margin:8px !important;" class="button"/>
+          <a style="cursor: pointer;text-align: right;" (click)="backClicked();"><img class="back-img" src="assets/img/backarrow.png" width="40px" height="30px"  alt="Back"></a>
+          <p id="loader" style="margin:-2px 63px -25px 58px;display:none;"><img class="loading-img" src="assets/img/load.gif" alt="loader"></p></td>
      </tr>
 </table>
 </form></div>

@@ -68,7 +68,7 @@ export class ClienteditUserComponent implements OnInit {
           this.UpdateClientUser.patchValue({            
               UserId:this.cuserProfile[0]['USERID'], 
               CLIENTID:this.cuserProfile[0]['CLIENTID'],
-              UserCategory:this.cuserProfile[0]['UserCategory'], 
+              UserCategory:'Client', 
               UserRoles:this.cuserProfile[0]['LEVEL'], 
               UserMrMs: this.cuserProfile[0]['USERMRMS'],
               UserName: this.cuserProfile[0]['USERNAME'], 

@@ -10,7 +10,7 @@
             <td><input type="text" id="UserMrMs"  maxlength="80" formControlName="UserMrMs" class="form-control"/></td>          
        </tr>
        <tr>
-          <td><label>Name</label></td>
+          <td><label>Name</label><span class="mandatory">*</span></td>
           <td><input type="text" [ngClass]="{ 'is-invalid': submitted && f.UserName.errors }" id="UserName"  maxlength="80" formControlName="UserName" class="form-control" required/>
           <div *ngIf="submitted && f.UserName.errors" class="invalid-feedback">
                <div *ngIf="f.UserName.errors.required">Please enter Name.</div>
@@ -22,7 +22,7 @@
             <td><input type="text" id="UserRemarks"  maxlength="80" formControlName="UserRemarks" class="form-control"/></td>          
        </tr>   
        <tr>
-          <td><label>Email Id</label></td>
+          <td><label>Email Id</label><span class="mandatory">*</span></td>
           <td><input type="text" [ngClass]="{ 'is-invalid': submitted && f.UserEmail.errors }" id="UserEmail"  maxlength="80" formControlName="UserEmail" class="form-control" required/>
           <div *ngIf="submitted && f.UserEmail.errors" class="invalid-feedback">
                <div *ngIf="f.UserEmail.errors.required">Please enter Email id.</div>
@@ -31,7 +31,7 @@
           </td>          
        </tr>
        <tr>
-          <td><label>Mobile Number</label></td>
+          <td><label>Mobile Number</label><span class="mandatory">*</span></td>
           <td><input type="text" maxlength="10" [ngClass]="{ 'is-invalid': submitted && f.UserContactNo.errors }" id="UserContactNo"  formControlName="UserContactNo" class="form-control" required/>
           <div *ngIf="submitted && f.UserContactNo.errors" class="invalid-feedback">
                <div *ngIf="f.UserContactNo.errors.required">Please enter Mobile number.</div>

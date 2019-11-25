@@ -68,7 +68,7 @@ export class VendoreditUserComponent implements OnInit {
           this.updateVendorUser.patchValue({
             UserId:this.vuserProfile[0]['USERID'], 
             VENDORID:this.vuserProfile[0]['VENDORID'],
-            UserCategory:this.vuserProfile[0]['UserCategory'], 
+            UserCategory:'Vendor', 
             UserRoles:this.vuserProfile[0]['LEVEL'], 
             UserMrMs: this.vuserProfile[0]['USERMRMS'],
             UserName: this.vuserProfile[0]['USERNAME'], 

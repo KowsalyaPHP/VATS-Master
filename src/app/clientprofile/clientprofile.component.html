@@ -2,7 +2,7 @@
 <app-menu></app-menu><br/>
 <h1 style="text-align: center;">Client Profile</h1><br/>
 <div>
-    <table #dataTable class="display" id="clientprofile" style="width:20%;margin:auto;"  *ngFor="let item of clientprofile">
+    <table #dataTable class="display" id="clientprofile" style="width:20%;margin-left:580px;"  *ngFor="let item of clientprofile">
         <tr><td><b>Client ID</b></td><td>{{item.ClientID}}</td></tr>
         <tr><td><b>Client Name</b></td><td>{{item.ClientName}}</td></tr>
         <tr><td><b>Client Short Name</b></td><td>{{item.ClientShortName}}</td></tr>
@@ -14,7 +14,7 @@
         <tr><td><b>Email Id</b></td><td>{{item.ClientEMAILID}}</td></tr>
         <tr><td><b>Client Type</b></td><td>{{item.ClientType}}</td></tr> 
     </table>
-    <p style="text-align: center;margin-top: 29px;"><a style="cursor: pointer;" (click)="backClicked();"><img class="back-img" src="assets/img/backarrow.png" width="30px" height="20px"  alt="Back"></a></p>
+    <p style="text-align: center;margin-top: 29px;"><a style="cursor: pointer;" (click)="backClicked();"><img class="back-img" src="assets/img/backarrow.png" width="40px" height="30px"  alt="Back"></a></p>
 </div>
 
 <app-footer></app-footer>
